@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        {{ replace .Name &#39;-&#39; &#39; &#39; | title }} - Jineng Han&#39;s homepage
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="第15章 友元、异常和其他 友元类 友元类方法 嵌套类 //上述都是在其他类中声明的类 引发异常、try块和catch块 异常类 运行阶段类型识别（RTTI" />
+    <meta name="generator" content="Hugo 0.82.0 with theme pure" />
+    <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }} - Jineng Han&#39;s homepage</title>
+    
+    
+    <link rel="stylesheet" href="https://hanin97.cn/css/style.min.b4b742918d33349bb411274c2c6de779fe2fda4d2101d2703f6bc0fc0a19edf2.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}" />
+<meta property="og:description" content="第15章 友元、异常和其他 友元类 友元类方法 嵌套类 //上述都是在其他类中声明的类 引发异常、try块和catch块 异常类 运行阶段类型识别（RTTI" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-29T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-11-29T00:00:00&#43;00:00" />
+<meta property="og:see_also" content="https://hanin97.cn/2021/01/flock-lucheng/" /><meta property="og:see_also" content="https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/" /><meta property="og:see_also" content="https://hanin97.cn/2020/12/an-artificial-intelligencebased-support-tool-for-automation-and-standardisation-of-gleason-grading-in-prostate-biopsies/" /><meta property="og:see_also" content="https://hanin97.cn/2020/12/cpp-chapter16-string%E7%B1%BB%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" /><meta property="og:see_also" content="https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/" />
+
+<meta itemprop="name" content="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}">
+<meta itemprop="description" content="第15章 友元、异常和其他 友元类 友元类方法 嵌套类 //上述都是在其他类中声明的类 引发异常、try块和catch块 异常类 运行阶段类型识别（RTTI"><meta itemprop="datePublished" content="2020-11-29T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-11-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2900">
+<meta itemprop="keywords" content="cpp," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}"/>
+<meta name="twitter:description" content="第15章 友元、异常和其他 友元类 友元类方法 嵌套类 //上述都是在其他类中声明的类 引发异常、try块和catch块 异常类 运行阶段类型识别（RTTI"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/hanin97" target="_blank">
+            <img class="img-circle img-rotate" src="https://hanin97.cn/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">Jineng Han</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">Jineng Han&#39;s homepage</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Nanjing, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link" rel="1">breast-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/cell-graph/" class="tag-list-link" rel="1">cell-graph<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link" rel="6">classification-network<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link" rel="1">colorectal-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link" rel="3">computational-pathology<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link" rel="5">computer-vision<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/cpp/" class="tag-list-link" rel="15">cpp<span
+               class="tag-list-count">15</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/css/" class="tag-list-link" rel="1">css<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/cvpr/" class="tag-list-link" rel="1">cvpr<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link" rel="1">domain-adaptation<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/emoji/" class="tag-list-link" rel="1">emoji<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/gnn/" class="tag-list-link" rel="1">gnn<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/html/" class="tag-list-link" rel="1">html<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/index/" class="tag-list-link" rel="1">index<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/markdown/" class="tag-list-link" rel="2">markdown<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/node-classification/" class="tag-list-link" rel="1">node-classification<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/non-local/" class="tag-list-link" rel="1">non-local<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/papers/" class="tag-list-link" rel="6">papers<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/prostate/" class="tag-list-link" rel="3">prostate<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/text/" class="tag-list-link" rel="1">text<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/themes/" class="tag-list-link" rel="1">themes<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/note/" class="category-list-link">note</a><span class="category-list-count">30</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/papers-reading/" class="category-list-link">papers-reading</a><span class="category-list-count">15</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/syntax/" class="category-list-link">syntax</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/themes/" class="category-list-link">themes</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link">breast-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/cell-graph/" class="tag-list-link">cell-graph</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link">classification-network</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link">colorectal-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link">computational-pathology</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link">computer-vision</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/cpp/" class="tag-list-link">cpp</a><span
+                    class="tag-list-count">15</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/cvpr/" class="tag-list-link">cvpr</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link">domain-adaptation</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/emoji/" class="tag-list-link">emoji</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/gnn/" class="tag-list-link">gnn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/html/" class="tag-list-link">html</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/node-classification/" class="tag-list-link">node-classification</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/non-local/" class="tag-list-link">non-local</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/papers/" class="tag-list-link">papers</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/prostate/" class="tag-list-link">prostate</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/text/" class="tag-list-link">text</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/themes/" class="tag-list-link">themes</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/01/flock-lucheng/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-01-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-01-09</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-01-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-01-07</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2020/12/an-artificial-intelligencebased-support-tool-for-automation-and-standardisation-of-gleason-grading-in-prostate-biopsies/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-31 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-12-31</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2020/12/cpp-chapter16-string%E7%B1%BB%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-03 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-12-03</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-03 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-12-03</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/"
+    >{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/" class="article-date">
+  <time datetime="2020-11-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-11-29</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/note/"> note </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/cpp/"> cpp </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2900字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h3 id="第15章-友元异常和其他">第15章 友元、异常和其他</h3>
+<ul>
+<li>友元类</li>
+<li>友元类方法</li>
+<li>嵌套类
+//上述都是在其他类中声明的类</li>
+<li>引发异常、try块和catch块</li>
+<li>异常类</li>
+<li>运行阶段类型识别（RTTI）</li>
+<li>dynamic_cast和typeid</li>
+<li>static_cast、const_cast和reiterpret_cast</li>
+</ul>
+<h4 id="151-友元类">15.1 友元类</h4>
+<p>友元类适用于两个类既不是继承关系，又不是包含关系，但两个类又有关系的情况，如遥控器和电视机。</p>
+<pre><code class="language-cpp">// tv.h
+#ifndef TV_H_
+#define TV_H_
+
+class Tv
+{
+    public:
+        friend class Remote;    // Remote可以使用Tv的私有成员
+        enum {Off, On};
+        enum {MinVal, MaxVal = 20};
+        enum {Antenna, Cable};
+        enum {TV, DVD};
+
+        Tv(int s = Off, int mc = 125) : state(s), volume(5),
+            maxchannel(mc), channel(2), mode(Cable), input(TC) {}
+        void onoff() {state = (state == On) ? Off : On;}
+        // void onoff() {state ^= 1;}
+        bool ison() const {return state == On;}
+        bool volup();
+        bool voldown();
+        void chanup();
+        void chandown();
+        void set_mode() {mode = (mode == Antenna) ? Cable : Antenna;}
+        void set_input() {input = (input == TV) ? DVD : TV;}
+        void setting() const;
+    private:
+        int state;
+        int volume;
+        int maxchannel;
+        int channel;
+        int mode;
+        int input;
+};
+class Remote
+{
+    ...
+};
+...
+</code></pre>
+<p><strong>友元成员函数：</strong> 仅让特定的类成员成为另一个类的友元。</p>
+<pre><code class="language-cpp">// 前向声明，因为Remote的方法提到了Tv对象，且Tv对象中也有Remote方法的声明
+// 在Tv类的声明中看到Remote的一个方法被声明为Tv类的友元之前，应该先看到Remote类
+// 的声明和set_chan()方法的声明；同理，Remote类声明中不要有内联代码，将方法的
+// 定义放在Tv类声明之后，并使用关键字inline使其成为内联方法
+class Tv;
+class Remote {...};
+class Tv
+{
+    friend void Remote::set_chan(Tv &amp; t, int c);
+    // 这样Remote类的set_chan成员就可以访问Tv类的私有成员
+};
+</code></pre>
+<p><strong>其他友元关系：</strong> 两个类互为友元
+对于使用Remote对象的Tv方法，其原型可在Remote类声明之前声明，但必须在Remote类声明之后定义。</p>
+<pre><code class="language-cpp">class Tv
+{
+    friend class Remote;
+    public:
+        void buzz(Remote &amp; r);
+        ...
+};
+class Remote
+{
+    friend class Tv;
+    public:
+        void Bool volup(Tv &amp; t) {t.volup();}
+        ...
+};
+inline void Tv::buzz(Remote &amp; r)
+{
+    ...
+}
+</code></pre>
+<p><strong>共同的友元：</strong></p>
+<pre><code class="language-cpp">// 前向声明
+class Analyzer;
+class Probe
+{
+    friend void sync(Analyzer &amp; a, const Probe &amp; p);
+    friend void sync(Probe &amp; p, const Analyzer &amp; a);
+    ...
+}
+class Analyzer
+{
+    friend void sync(Analyzer &amp; a, const Probe &amp; p);
+    friend void sync(Probe &amp; p, const Analyzer &amp; a);
+    ...
+};
+
+inline void sync(Analyzer &amp; a, const Probe &amp; p)
+{
+    ...
+}
+inline void sync(Probe &amp; p, const Analyzer &amp; a)
+{
+    ...
+}
+</code></pre>
+<h4 id="152-嵌套类">15.2 嵌套类</h4>
+<p>在另一个类中声明的类被称为嵌套类（nested class）。包含类的成员函数可以创建和使用被嵌套类的对象，而仅当声明位于共有部分，才能在包含类的外面使用嵌套类，而且必须使用作用域解析运算符。
+什么时候需要使用嵌套类：通常是为了帮助实现另一个类，并避免名称冲突，使用类来存放变量可以利用类构造函数方便地赋值。</p>
+<h4 id="153-异常">15.3 异常</h4>
+<ol>
+<li>throw语句将控制权向上返回到第一个这样的函数：包含能够捕获相应异常的try-catch组合。</li>
+<li>引发异常时编译器总是创建一个临时拷贝。</li>
+<li>catch块的排序顺序应该与异常类派生顺序相反，因为引发的异常对象将被第一个与之匹配的catch块捕获。
+<img src="http://lcipm.com/Jineng/picture-bed/uploads/2c3fcc85d5010595420028c5c417529e/20201128223836.png" alt=""></li>
+<li>可以使用省略号来表示异常类型，从而捕获任何异常。</li>
+</ol>
+<pre><code class="language-cpp">#include &lt;cstdlib&gt;
+std::abort(); // 发送消息：abnormal program termination，终止程序
+std::exit();  // 不发送消息，终止程序
+// 更希望遇到异常时进行一些处理，而不是直接终止程序，这时候可以返回错误码或者
+// throw引发异常并用catch捕获异常，try后面可以跟好几个catch与对应异常类型匹配
+// 如果没找到对应的catch，默认异常终止
+// 程序进行栈解退以回到能够捕获异常的地方时，将释放栈中动存储型变量。
+// 如果变量是类对象，将为该对象调用析构函数。
+#include &lt;iostream&gt;
+double hmean(double a, double b);
+
+int main()
+{
+    double x, y, z;
+
+    std::cout &lt;&lt; &quot;Enter two numbers: &quot;;
+    while (std::cin &gt;&gt; x &gt;&gt; y)
+    {
+        try {
+            z = heamn(x, y);
+        }
+        catch (const char * s) // 与字符串异常匹配
+        {
+            std::cout &lt;&lt; s &lt;&lt; std::endl;
+            std::cout &lt;&lt; &quot;Enter a new pair of numbers: &quot;;
+            continue;
+        }
+        std::cout &lt;&lt; &quot;Harmonic mean of &quot; &lt;&lt; x &lt;&lt; &quot; and &quot; &lt;&lt; y
+            &lt;&lt; &quot; is &quot; &lt;&lt; z &lt;&lt; std::endl;
+        std::cout &lt;&lt; &quot;Enter next set of numbers. &lt;q to quit&gt;: &quot;;
+    }
+    std::cout &lt;&lt; &quot;Bye!\n&quot;;
+    return 0;
+}
+
+double hmean(double a, double b)
+{
+    if (a == -b)
+        throw &quot;some description&quot;;
+    return 2.0 * a * b / (a + b);
+}
+
+</code></pre>
+<p><strong>exception类</strong>
+可以将exception类用作异常的基类，里面有个名为what()的虚拟成员函数，它返回一个字符串。
+一些基于exception的异常类型。</p>
+<ol>
+<li>stdexcept异常类
+这些类中都有一个可以为what()提供返回字符串的构造函数。
+两个派生类系列的基类：
+a. logic_error系列：可通过编程修复
+<ul>
+<li>domain_error：定义域</li>
+<li>invalid_argument：有效参数</li>
+<li>length_error：空间</li>
+<li>out_of_bounds：索引错误
+b. runtime_error系列：存在无法避免的问题</li>
+<li>range_error：</li>
+<li>overflow_error：上溢</li>
+<li>underflow_error：下溢</li>
+</ul>
+</li>
+<li>bad_alloc异常和new
+当使用new出现内存分配问题时，以前是返回一个空指针，现在是让new引发bad_alloc异常。</li>
+<li>空指针和new
+为了兼容以前的返回空指针的new</li>
+</ol>
+<pre><code class="language-cpp">int * pi = new (std::nothrow) int;
+</code></pre>
+<p>异常的意外情况：
+意外异常：不与规范列表中的某种异常匹配，先调用unexpected()函数，这个函数将调用terminate()函数，可修改，set_unexpected(func_name)
+未捕获异常：不会导致程序立刻终止，而是先调用函数terminate()，默认情况下，terminate()调用abort()函数，可修改，set_terminate(func_name)</p>
+<p>可以设计一个替代函数，将意外异常转换为bad_exception异常</p>
+<pre><code class="language-cpp">#include &lt;exception&gt;
+using namespace std;
+
+void myUnexpected()
+{
+    throw std::bad_exception();
+    // 仅使用throw，而不指定异常将导致重新引发原来的异常
+}
+</code></pre>
+<h4 id="154-rttiruntime-type-identification">15.4 RTTI(Runtime Type Identification)</h4>
+<p>为什么会出现RTTI？想知道类型，那为什么要知道类型呢？1. 派生对象可能包含不是继承而来的方法，只有某些类型的对象可以使用该方法；2. 想跟踪生成的对象的类型。
+<strong>注意：只能将RTTI用于包含虚函数的类层次结构，因为只有对于这种类层次结构，才应该将派生对象的地址赋给基类指针。</strong></p>
+<p>如何支持RTTI？</p>
+<ol>
+<li>如果可能的话，dynamic_cast运算符，使用一个指向基类的指针来生成一个指向派生类的指针，否则，该运算符返回0&ndash;空指针；
+<pre><code class="language-cpp">// 指针pg的类型是否可以被安全地转换为Superb *？
+// 可以的话，就返回对象的地址
+// 不可以的话，返回空指针
+Superb * pm = dynamic_cast&lt;Superb *&gt;(pg);
+</code></pre>
+</li>
+<li>typeid返回一个指出对象的类型的值；
+<pre><code class="language-cpp">// 头文件typeinfo
+// typeid运算符使得能够确定两个对象是否为同种类型
+// 接受两种参数：类名；结果为对象的表达式
+// 返回一个对type_info对象的引用，包含一个name()成员
+typeid(Magnificent) == typeid(*pg)
+// 如果pg是一个空指针，程序将引发bad_typeid异常
+</code></pre>
+</li>
+<li>type_info结构存储了有关特定类型的信息</li>
+</ol>
+<h4 id="155-类型转换运算符">15.5 类型转换运算符</h4>
+<p><img src="http://lcipm.com/Jineng/picture-bed/uploads/674f7007b4be6d7e7498d4d8eeb444aa/20201129214253.png" alt="">
+🐸：给爷看笑了。
+出现的原因：C语言中的类型转换运算符太过松散。
+4个类型转换运算符：dynamic_cast; const_cast; static_cast; reinterpret_cast。</p>
+<ol>
+<li>dynamic_cast
+<pre><code class="language-cpp">// 假设High和Low是两个类，ph和pl的类型分别为High*和Low*
+// 则仅当Low是High的可访问基类时，下面的语句才将一个Low*指针赋给pl
+// 这个指针指向谁？
+pl = dynamic_cast&lt;Low *&gt; ph;
+</code></pre>
+</li>
+<li>const_cast
+<pre><code class="language-cpp">// 用于执行只有一种用途的类型转换，即const或volatile
+const_cast &lt;type-name&gt; (expression)
+// 除了const或volatile特征可以不同外，type_name和expression的类型必须相同
+High bar;
+const High * pbar = &amp;bar;
+High * pb = const_cast&lt;High *&gt; (pbar);
+// 使*pb成为一个可用于修改bar对象值的指针
+// 只有当指向的值不是const时才可行
+</code></pre>
+</li>
+<li>static_cast
+<pre><code class="language-cpp">// 仅当type_name可被隐式转换为expression所属的类型或反过来时，转换才是合法的
+static_cast &lt;type_name&gt; (expression)
+</code></pre>
+</li>
+<li>reinterpret_cast
+<pre><code class="language-cpp">// 用于天生危险的类型转换
+struct dat {short a; short b;};
+long value = 0xA224B11B;
+dat * pd = reinterpret_cast&lt;dat *&gt; (&amp;value);
+cout &lt;&lt; hex &lt;&lt; pd-&gt;a;
+// 显示value的前2个字节
+</code></pre>
+</li>
+</ol>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/" title="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}" target="_blank" rel="external">https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/hanin97" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hanin97.cn/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/hanin97" target="_blank"><span class="text-dark">Jineng Han</span><small class="ml-1x">Jineng Han&#39;s homepage</small></a></h3>
+        <div>NUIST, master, A fan of VAE</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://hanin97.cn/2020/11/hrnet/" title="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/"
+                    title="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+            data-target="#donateModal"><span>赏</span></button>
+        
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat"
+                data-mobile-sites="weibo,qq,qzone,wechat"></div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content donate">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="donate-box">
+                    <div class="donate-head">
+                        <p>感谢您的支持,我会继续努力的!</p>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/alipayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/wechatpayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+                        </div>
+                    </div>
+                    <div class="donate-footer">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
+                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
+                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/hanin97" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://hanin97.cn/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2020  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://hanin97.cn/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://hanin97.cn/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/hanin97.cn\/',
+            CONTENT_URL: 'https:\/\/hanin97.cn\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://hanin97.cn/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

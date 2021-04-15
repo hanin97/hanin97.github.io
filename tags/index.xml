@@ -1,62 +1,194 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Pure theme for Hugo</title>
+    <title>Tags on Jineng Han&#39;s homepage</title>
     <link>https://hanin97.cn/tags/</link>
-    <description>Recent content in Tags on Pure theme for Hugo</description>
+    <description>Recent content in Tags on Jineng Han&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://hanin97.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://hanin97.cn/2019/03/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2021/01/flock-lucheng/</link>
+      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hanin97.cn/2019/03/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      <guid>https://hanin97.cn/2021/01/flock-lucheng/</guid>
+      <description>Feature-driven Local Cell Graph (FLocK): New Computational Pathology-based Descriptors for Prognosis of Lung Cancer and HPV Status of Oropharyngeal Cancers 🌈个人总结：构图的时候并不直接使用空间邻近关系，而是使用特征（包含坐标）欧氏距离，但又加了点看起来更</description>
     </item>
     
     <item>
-      <title>Placeholder Text</title>
-      <link>https://hanin97.cn/2019/03/placeholder-text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hanin97.cn/2019/03/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de
-pectora summo.&lt;/p&gt;</description>
+      <guid>https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/</guid>
+      <description>Predicting survival from colorectal cancer histology slides using deep learning: A retrospective multicenter study </description>
     </item>
     
     <item>
-      <title>Math Typesetting</title>
-      <link>https://hanin97.cn/2019/03/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/12/an-artificial-intelligencebased-support-tool-for-automation-and-standardisation-of-gleason-grading-in-prostate-biopsies/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hanin97.cn/2019/03/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+      <guid>https://hanin97.cn/2020/12/an-artificial-intelligencebased-support-tool-for-automation-and-standardisation-of-gleason-grading-in-prostate-biopsies/</guid>
+      <description>An Artificial Intelligence–based Support Tool for Automation and Standardisation of Gleason Grading in Prostate Biopsies 贡献 两阶段训练 定量对比模型在不同扫描仪上的结果 SPSS 1. 数据 穿刺图像，其中训练集图</description>
     </item>
     
     <item>
-      <title>Emoji Support</title>
-      <link>https://hanin97.cn/2019/03/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/12/cpp-chapter16-string%E7%B1%BB%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hanin97.cn/2019/03/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>https://hanin97.cn/2020/12/cpp-chapter16-string%E7%B1%BB%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/</guid>
+      <description>第16章 String类和标准模板库 标准C++ string类 模板auto_prt, unique_ptr, shared_ptr&amp;ndash;智能指针 标准模板库（ST</description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://hanin97.cn/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hanin97.cn/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
+      <guid>https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/</guid>
+      <description>第17章 输入、输出和文件 17.4 文件输入和输出 ofstream fout; fout.open(&amp;quot;jar.txt&amp;quot;); // 默认模式打开文件进行输出，如果没有这样的文件，将创建一个新文件， // 如果有这样的文件，则打开文</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/</link>
+      <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/</guid>
+      <description>第15章 友元、异常和其他 友元类 友元类方法 嵌套类 //上述都是在其他类中声明的类 引发异常、try块和catch块 异常类 运行阶段类型识别（RTTI</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/hrnet/</link>
+      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/hrnet/</guid>
+      <description>Deep High-Resolution Representation Learning for Human Pose Estimation 当前问题 大多数现有分割模型/姿态估计模型都是由低分辨率表达恢复高分辨率表达。 本文特点 在整个网络中保持了高分辨率表达，同时通过</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/cpp-chapter14-c-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/cpp-chapter14-c-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8/</guid>
+      <description>第14章 C++中的代码重用 🐸小知识： 获得接口是is-a关系的组成部分，不继承接口是has-a关系的组成部分； 当初始化列表包含多个项目时，这些</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/can-uda/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/can-uda/</guid>
+      <description>Contrastive Adaptation Network for Unsupervised Domain Adaptation 预备知识 在域级别衡量域不一致性。 Maximum Mean Discrepancy （MMD） Joint MMD 目标 使用有标记的源域数据预测无标记的目标域数据。 已有方法的缺点 之前的方法通</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/cpp-chapter13-%E7%B1%BB%E7%BB%A7%E6%89%BF/</link>
+      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/cpp-chapter13-%E7%B1%BB%E7%BB%A7%E6%89%BF/</guid>
+      <description>第13章 类继承 🐸小知识： 以前一直以为继承跟直接复制再添加没啥区别，而且就算使用继承，也得先了解基类的特性，熟悉基类，现在有一点让我对继承有了</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/cpp-chapter12-%E7%B1%BB%E5%92%8C%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</link>
+      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/cpp-chapter12-%E7%B1%BB%E5%92%8C%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</guid>
+      <description>第12章 类和动态内存分配 12.1 动态内存和类 想在类中使用new和delete运算符，将会比平时多出许多问题，在这种情况下，析构函数必不可少。 🐸小知</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/dropedge/</link>
+      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/dropedge/</guid>
+      <description>DROPEDGE: TOWARDS DEEP GRAPH CONVOLUTIONAL NETWORKS ON NODE CLASSIFICATION 1. 背景 过拟合和过度平滑是当前节点分类的两个主要困难。 2. 解决方法 DropEdge策略： 并不是网络结构的创新，只是在每个epo</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/cpp-chapter11-%E4%BD%BF%E7%94%A8%E7%B1%BB/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/cpp-chapter11-%E4%BD%BF%E7%94%A8%E7%B1%BB/</guid>
+      <description>🐸第11章 使用类 11.1 运算符重载 运算符重载是一种形式的C++多态，可使代码看起来更自然，隐藏内部机理，强调实质。 operatorop(argument-list) // 重载+运算符 operator+() 🌈一些限制： 重</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/11/cpp-chapter10-%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/11/cpp-chapter10-%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/</guid>
+      <description>第10章 对象和类 目录 过程性编程和面向对象编程 类概念 如何定义和实现类 公有类访问和私有类访问 类的数据成员 类方法（类函数成员） 创建和使用类对象 类的</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/10/resnest/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnest/</guid>
+      <description>ResNeSt: Split-Attention Networks 1. 提出背景 现如今用于图像分类的网络常被用于其他任务，如目标检测、实例分割等，而在其中经常被用到的网络就是ResNet，但这毕竟是为图像</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/10/resnet/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnet/</guid>
+      <description>Deep Residual Learning for Image Recognition 1. 问题背景 当时网络的深度浅，深的网络很难训练（梯度爆炸、难以拟合、退化问题：深度越深，精度趋于饱和后迅速衰减），但是网络的深度是</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/10/resnext/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnext/</guid>
+      <description>Aggregated Residual Transformations for Deep Neural Networks 1. 问题背景 Inception: split-transform-merge，这种策略希望用低的计算复杂度来近似大而密集的层的表达能力。虽然它有较高</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4/</guid>
+      <description>第9章 内存模型和名称空间 9.1 单独编译 一般将一个大型文件分解为三部分： 头文件：包含结构声明和使用这些结构的函数的原型（通常有函数原型、使用#de</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/10/microenvironmental_heterogeneity_breast_yinyinyuan/</link>
+      <pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/microenvironmental_heterogeneity_breast_yinyinyuan/</guid>
+      <description>Microenvironmental Heterogeneity Parallels Breast Cancer Progression: A Histology–Genomic Integration Analysis 个人总结 定量化肿瘤微环境异质性（肿瘤生态系统多样性指数[EDI]）； 将肿瘤微环境的异质性</description>
+    </item>
+    
+    <item>
+      <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</title>
+      <link>https://hanin97.cn/2020/10/efficientnet/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/efficientnet/</guid>
+      <description>EfficientNet: Rethinking Model Scaling for Convolution Neural Networks 预备知识 FLOPS：每秒浮点运算次数 FLOPs：浮点运算数 MAC：乘积累加运算（Multiply Accumulate） 所需显</description>
     </item>
     
   </channel>

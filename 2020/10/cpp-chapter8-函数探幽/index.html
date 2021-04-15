@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        {{ replace .Name &#39;-&#39; &#39; &#39; | title }} - Jineng Han&#39;s homepage
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="第8章 函数探幽 8.1 C&#43;&#43;内联函数 🐸小知识： 内联函数是C&#43;&#43;为提高程序运行速度所做的一项改进，具体是怎么提高运行速度的呢？ 调用常规函数： 存储调用" />
+    <meta name="generator" content="Hugo 0.82.0 with theme pure" />
+    <title>{{ replace .Name &#39;-&#39; &#39; &#39; | title }} - Jineng Han&#39;s homepage</title>
+    
+    
+    <link rel="stylesheet" href="https://hanin97.cn/css/style.min.b4b742918d33349bb411274c2c6de779fe2fda4d2101d2703f6bc0fc0a19edf2.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}" />
+<meta property="og:description" content="第8章 函数探幽 8.1 C&#43;&#43;内联函数 🐸小知识： 内联函数是C&#43;&#43;为提高程序运行速度所做的一项改进，具体是怎么提高运行速度的呢？ 调用常规函数： 存储调用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hanin97.cn/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-19T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-10-19T00:00:00&#43;00:00" />
+<meta property="og:see_also" content="https://hanin97.cn/2021/01/flock-lucheng/" /><meta property="og:see_also" content="https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/" /><meta property="og:see_also" content="https://hanin97.cn/2020/12/an-artificial-intelligencebased-support-tool-for-automation-and-standardisation-of-gleason-grading-in-prostate-biopsies/" /><meta property="og:see_also" content="https://hanin97.cn/2020/12/cpp-chapter16-string%E7%B1%BB%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" /><meta property="og:see_also" content="https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/" /><meta property="og:see_also" content="https://hanin97.cn/2020/11/cpp-chapter15-%E5%8F%8B%E5%85%83%E5%BC%82%E5%B8%B8%E5%92%8C%E5%85%B6%E4%BB%96/" />
+
+<meta itemprop="name" content="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}">
+<meta itemprop="description" content="第8章 函数探幽 8.1 C&#43;&#43;内联函数 🐸小知识： 内联函数是C&#43;&#43;为提高程序运行速度所做的一项改进，具体是怎么提高运行速度的呢？ 调用常规函数： 存储调用"><meta itemprop="datePublished" content="2020-10-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-10-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3252">
+<meta itemprop="keywords" content="cpp," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}"/>
+<meta name="twitter:description" content="第8章 函数探幽 8.1 C&#43;&#43;内联函数 🐸小知识： 内联函数是C&#43;&#43;为提高程序运行速度所做的一项改进，具体是怎么提高运行速度的呢？ 调用常规函数： 存储调用"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/hanin97" target="_blank">
+            <img class="img-circle img-rotate" src="https://hanin97.cn/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">Jineng Han</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">Jineng Han&#39;s homepage</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Nanjing, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link" rel="1">breast-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/cell-graph/" class="tag-list-link" rel="1">cell-graph<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link" rel="6">classification-network<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link" rel="1">colorectal-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link" rel="3">computational-pathology<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link" rel="5">computer-vision<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/cpp/" class="tag-list-link" rel="15">cpp<span
+               class="tag-list-count">15</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/css/" class="tag-list-link" rel="1">css<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/cvpr/" class="tag-list-link" rel="1">cvpr<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link" rel="1">domain-adaptation<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/emoji/" class="tag-list-link" rel="1">emoji<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/gnn/" class="tag-list-link" rel="1">gnn<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/html/" class="tag-list-link" rel="1">html<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/index/" class="tag-list-link" rel="1">index<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/markdown/" class="tag-list-link" rel="2">markdown<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/node-classification/" class="tag-list-link" rel="1">node-classification<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/non-local/" class="tag-list-link" rel="1">non-local<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/papers/" class="tag-list-link" rel="6">papers<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/prostate/" class="tag-list-link" rel="3">prostate<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/text/" class="tag-list-link" rel="1">text<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/themes/" class="tag-list-link" rel="1">themes<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/note/" class="category-list-link">note</a><span class="category-list-count">30</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/papers-reading/" class="category-list-link">papers-reading</a><span class="category-list-count">15</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/syntax/" class="category-list-link">syntax</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/themes/" class="category-list-link">themes</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link">breast-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/cell-graph/" class="tag-list-link">cell-graph</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link">classification-network</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link">colorectal-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link">computational-pathology</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link">computer-vision</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/cpp/" class="tag-list-link">cpp</a><span
+                    class="tag-list-count">15</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/cvpr/" class="tag-list-link">cvpr</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link">domain-adaptation</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/emoji/" class="tag-list-link">emoji</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/gnn/" class="tag-list-link">gnn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/html/" class="tag-list-link">html</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/node-classification/" class="tag-list-link">node-classification</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/non-local/" class="tag-list-link">non-local</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/papers/" class="tag-list-link">papers</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/prostate/" class="tag-list-link">prostate</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/text/" class="tag-list-link">text</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/themes/" class="tag-list-link">themes</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/01/flock-lucheng/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-01-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-01-09</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-01-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-01-07</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2020/12/an-artificial-intelligencebased-support-tool-for-automation-and-standardisation-of-gleason-grading-in-prostate-biopsies/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-31 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-12-31</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2020/12/cpp-chapter16-string%E7%B1%BB%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-03 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-12-03</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2020/12/cpp-chapter17-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E6%96%87%E4%BB%B6/" class="title">{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-03 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-12-03</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/"
+    >{{ replace .Name &#39;-&#39; &#39; &#39; | title }}</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://hanin97.cn/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/" class="article-date">
+  <time datetime="2020-10-19 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-10-19</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/note/"> note </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/cpp/"> cpp </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3252字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h3 id="第8章-函数探幽">第8章 函数探幽</h3>
+<h4 id="81-c内联函数">8.1 C++内联函数</h4>
+<p>🐸<!-- raw HTML omitted -->小知识：<!-- raw HTML omitted --></p>
+<ol>
+<li>内联函数是C++为提高程序运行速度所做的一项改进，具体是怎么提高运行速度的呢？
+<strong>调用常规函数：</strong>
+存储调用指令的地址&ndash;&gt;复制函数参数至堆栈&ndash;&gt;跳到标记函数起点的内存单元并执行函数代码（也许还需将返回值放入到寄存器中）&ndash;&gt;调回地址被保存的调用指令处。
+<strong>使用内联函数：</strong>
+编译器使用相应的函数代码替换函数调用，无需跳来跳去，以占用更多内存为代价。</li>
+<li>内联函数不能递归；</li>
+<li>使用规则：要么在函数声明前加上关键字inline，要么在函数定义前加上关键字inline，通
+常省略原型，将整个定义放在本应提供原型的地方；</li>
+<li>大函数不适合用内联，因为本身执行时间就很长；</li>
+<li>C++内联函数可以按值传递，但C语言的宏定义<code>#define SQUARE(X) ((X)*(X))</code>不可以按值传递;</li>
+</ol>
+<p><strong>示例：</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+inline double square(double x) {return x * x;}
+
+int main()
+{
+    using namespace std;
+    double a, b;
+    double c = 13.0;
+
+    a = square(5.0);
+    b = square(4.5 + 7.5);
+    cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; &quot;, b = &quot; &lt;&lt; b &lt;&lt; endl;
+    cout &lt;&lt; &quot;c = &quot; &lt;&lt; c;
+    cout &lt;&lt; &quot;, c square = &quot; &lt;&lt; square(c++) &lt;&lt; endl;
+}
+</code></pre>
+<h4 id="82-引用变量">8.2 引用变量</h4>
+<p>引用是一种复合类型，它是已定义的变量的别名，与原变量指向相同的值和地址；
+🐸<!-- raw HTML omitted -->小知识：<!-- raw HTML omitted --></p>
+<ol>
+<li>通过将引用变量用作参数，函数将使用原始数据，而不是其副本；</li>
+<li>引用必须在声明时将其初始化，更接近const指针;</li>
+<li>在用作函数参数时，尽可能使用const;</li>
+<li>返回引用时直接把返回值复制给接收变量，而不用创建临时变量（应避免返回临时变量的引
+用或指针）；</li>
+<li>返回引用的函数实际上式被引用的变量的别名；</li>
+</ol>
+<!-- raw HTML omitted -->
+<p><strong>创建引用变量</strong></p>
+<pre><code class="language-cpp">int rats;
+int &amp; rodents = rats;           // 让rodents成为rats的别名
+</code></pre>
+<p><strong>将引用用作函数参数</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+void swap(int &amp; a, int &amp; b);
+
+int main()
+{
+    using namespace std;
+    int wallet1 = 300;
+    int wallet2 = 350;
+
+    swap(wallet1, wallet2);
+}
+
+void swap(int &amp; a, int &amp; b)
+{
+    int temp;
+
+    temp = a;
+    a = b;
+    b = temp;
+}
+</code></pre>
+<p><strong>临时变量、引用和const</strong>
+C++将在两种情况下生成临时变量（仅当参数为const时，C++才允许这样）：</p>
+<ol>
+<li>实参的类型正确，但不是左值；</li>
+<li>实参的类型不正确，但可以转换为正确的类型。</li>
+</ol>
+<p>临时变量并不会影响原变量。</p>
+<pre><code class="language-cpp">double refcube(const double &amp;ra)
+{
+    return ra * ra * ra;
+}
+double side = 3.0;
+double * pd = &amp;side;
+double &amp; rd = side;
+long edge = 5L;
+double lens[4] = {2.0, 5.0, 10.0, 12.0};
+double c1 = refcube(side);
+double c2 = refcube(lens[2]);
+double c3 = refcube(rd);
+double c4 = refcube(*pd);                   
+double c5 = refcube(edge)                   // ra is temporary variable, case 2
+double c6 = refcube(7.0);                   // ra is temporary variable, case 1
+double c7 = refcube(side + 10.0);           // ra is temporary variable, case 1
+</code></pre>
+<p><strong>右值引用</strong>
+这种引用可指向右值，使用&amp;&amp;声明。</p>
+<pre><code class="language-cpp">double &amp;&amp; rref = std::sqrt(36.00);
+double j = 15.0;
+double &amp;&amp; jref = 2.0 * j * 18.5;
+std::out &lt;&lt; rred &lt;&lt; endl;
+std::out &lt;&lt; jred &lt;&lt; endl;
+</code></pre>
+<p><strong>将引用作为函数的返回值</strong></p>
+<pre><code class="language-cpp">// 返回string
+const string v1(const string &amp; s1, const string &amp; s2)
+{
+    string temp;
+
+    string = s2 + s1 +s2;
+    return temp;
+}
+// 返回string的引用
+const string &amp; v2(string &amp; s1, const string &amp; s2)
+{
+    s1 = s2 + s1 + s2;
+    return s1;
+}
+</code></pre>
+<p><strong>对象、继承和引用</strong></p>
+<ol>
+<li>派生类继承基类的方法；</li>
+<li>基类引用可以指向派生类对象。</li>
+</ol>
+<p><!-- raw HTML omitted -->注意下面的程序：参数os（类型为ostream &amp;）可以指向ostream对象（如cout），也可以指向ostream的派生类ofstream对象（如fout）。<!-- raw HTML omitted --></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+void file_it(ostream &amp; os, double fo, const double fe[], int n);
+const int LIMIT = 5;
+int main()
+{
+    ofstream fout;
+    const char * fn = &quot;ep-data.txt&quot;;
+    fout.open(fn);
+    if (!fout.is_open())
+    {
+        cout &lt;&lt; &quot;Can't open &quot; &lt;&lt; fn &lt;&lt; &quot;. Bye.\n&quot;;
+        exit(EXIT_FAILURE);
+    }
+    double objective;
+    cout &lt;&lt; &quot;Enter the focal length of your &quot;
+            &quot;telescope objective in mm: &quot;;
+    cin &gt;&gt; objective;
+    double eps[LIMIT];
+    cout &lt;&lt; &quot;Enter the focal lengths, in mm, of &quot; &lt;&lt; LIMIT
+         &lt;&lt; &quot; eyepieces: \n&quot;;
+    for (int i = 0; i &lt; LIMIT; i++)
+    {
+        cout &lt;&lt; &quot;Eyepiece #&quot; &lt;&lt; i + 1 &lt;&lt; &quot;: &quot;;
+        cin &gt;&gt; eps[i];
+    }
+    file_it(fout, objective, eps, LIMIT);
+    file_it(cout, objective, eps, LIMIT);
+    cout &lt;&lt; &quot;Done\n&quot;;
+    cin.get();
+    cin.get();
+    return 0;
+}
+
+void file_it(ostream &amp; os, double fo, const double fe[], int n)
+{
+    ios_base::fmtflags initial;
+    initial = os.setf(ios_base::fixed);
+    os.precision(0);
+    os &lt;&lt; &quot;Focal length of objective: &quot; &lt;&lt; fo &lt;&lt; &quot; mm\n&quot;;
+    os.setf(ios::showpoint);
+    os.precision(1);
+    os.width(12);
+    os &lt;&lt; &quot;f.1. eyepiece&quot;;
+    os.width(15);
+    os &lt;&lt; &quot;magnification&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; n; i++)
+    {
+        os.width(12);
+        os &lt;&lt; fe[i];
+        os.width(15);
+        os &lt;&lt; int (fo/fe[i] + 0.5) &lt;&lt; endl;
+    }
+    os.setf(initial);
+}
+</code></pre>
+<p><strong>何时使用引用参数：</strong></p>
+<ol>
+<li>修改调用函数中的数据对象；</li>
+<li>提高程序的运行速度；</li>
+</ol>
+<h4 id="83-默认参数">8.3 默认参数</h4>
+<p>🐸<!-- raw HTML omitted -->小知识：<!-- raw HTML omitted --></p>
+<ol>
+<li>通过函数原型设置默认值<code>char * left(const char * str, int n = 1);</code>，必须从右向左添加默认值；</li>
+<li><em><strong>在设计类时通过使用默认参数，可以减少要定义的析构函数、方法以及方法重载的数量；</strong></em></li>
+</ol>
+<h4 id="84-函数重载函数多态">8.4 函数重载（函数多态）</h4>
+<p>C++在C语言的基础上新增的功能。
+特征标：函数的参数列表，包括参数数目、类型、排列顺序。
+🐸<!-- raw HTML omitted -->小知识：<!-- raw HTML omitted --></p>
+<ol>
+<li>默认参数允许使用不同数目的参数调用同一个函数，而函数多态允许使用多个同名的函数（<strong>那C++怎么知道是在用同一个函数的默认参数还是多态的同名的函数呢？函数重载的条件是它们的特征标不同</strong>）；</li>
+<li>从编译器的角度考虑特征标；</li>
+<li>没有匹配的原型并不会自动停止使用其中的某个函数，因为C++将尝试使用标准类型转换强
+制进行匹配，但如果有多个函数满足强制匹配，则C++将其视为错误；</li>
+<li>匹配函数时，并不区分const和非const变量
+<pre><code class="language-cpp">void dribble(char * bits);
+void dribble(const char *cbits);
+void dabble(char * bits);
+void drivel(const chat * bits);
+
+const char p1[20] = &quot;How's the weather?&quot;;
+char p2[20] = &quot;How are you?&quot;;
+dribble(p1);                 // dribble(const char *)
+dribble(p2);                 // dribble(char *)
+dabble(p1);                  // no match
+dabble(p2);                  // dabble(char *)
+drivel(p1);                  // drivel(const char *)
+drivel(p2);                  // drivel(const char *)
+</code></pre>
+</li>
+<li>重载引用参数时，将调用最匹配的版本（参数是左值、const还是右值）；</li>
+<li>C++怎么分得清到底调用哪个</li>
+</ol>
+<p><strong>何时使用函数重载</strong>
+仅当函数基本上执行相同的任务，但使用不同类型的参数时，才应使用函数重载，如果只是参数数量不同，可以考虑默认参数。</p>
+<h4 id="85-函数模板">8.5 函数模板</h4>
+<p>函数模板就是使用泛型来定义函数，其中的泛型可以用具体的类型来替换，编译器在编译的时候会将泛型替换为具体的类型。</p>
+<p>🐸<!-- raw HTML omitted -->小知识：<!-- raw HTML omitted --></p>
+<ol>
+<li>并非所有的模板参数都必须是模板参数类型；</li>
+<li>在原型声明时需要加上<code>template &lt;typename AnyType&gt;</code>；</li>
+<li>函数模板虽然试图使用泛型来简化代码，但是它仍然不能处理所有数据类型，比如常规变量
+的<code>a=b</code>不能用于数组，<code>a*b</code>不能用于指针参数等，所以有必要使用不同的原型，那怎么分清使用哪个原型呢？这时候就要涉及到原型优先级：非模板函数&gt;具体化&gt;常规模板（见下面示例）；</li>
+<li><!-- raw HTML omitted -->既然可以隐式实例化，显式实例化有什么用呢？加快运行速度？<!-- raw HTML omitted --></li>
+</ol>
+<pre><code class="language-cpp">template &lt;typename AnyType&gt;         // template &lt;class AnyType&gt;
+void Swap(AnyType &amp;a, AnyType &amp;b)
+{
+    AnyType temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+</code></pre>
+<p><strong>具体化</strong></p>
+<pre><code class="language-cpp">// non template function prototype, job is a struct
+void Swap(job &amp;, job &amp;);
+
+// template prototype
+template &lt;typename T&gt;
+void Swap(T &amp;, T &amp;);
+
+// explicit specialization for the job type
+template &lt;&gt; void Swap&lt;job&gt;(job &amp;, job &amp;);
+template &lt;&gt; void Swap(job &amp;, job &amp;);
+</code></pre>
+<p><strong>原型优先级</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+void Swap(int &amp;a, int &amp;b);
+// 隐式实例化（explicit instantiation）
+template &lt;typename T&gt;
+void Swap(T &amp;a, T &amp;b);
+// 显式实例化（explicit instantiation）
+template void Swap&lt;int&gt;(int, int);
+// 显示具体化（explicit specialization），不能和显示实例化同时使用
+template &lt;&gt; void Swap&lt;job&gt;(job &amp;j1, job &amp;j2);
+void Show(job &amp;j);
+
+struct job
+{
+    char name[40];
+    double salary;
+    int floor;
+};
+
+
+
+int main()
+{
+    cout.precision(2);
+    cout.setf(ios::fixed, ios::floatfield);
+    int i = 10, j = 20;
+    cout &lt;&lt; &quot;i, j = &quot; &lt;&lt; i &lt;&lt; &quot;, &quot; &lt;&lt; j &lt;&lt; &quot;.\n&quot;;
+    cout &lt;&lt; &quot;Using compiler-generated int swapper:\n&quot;;
+    Swap(i, j);
+    cout &lt;&lt; &quot;Now i, j = &quot; &lt;&lt; i &lt;&lt; &quot;, &quot; &lt;&lt; j &lt;&lt; &quot;.\n&quot;;
+
+    job sue = {&quot;jhan&quot;, 4235454.76, 7};
+    job sidney = {&quot;xyhan&quot;, 32424.56, 9};
+    cout &lt;&lt; &quot;Before job swapping:\n&quot;;
+    Show(sue);
+    Show(sidney);
+    Swap(sue, sidney);
+    cout &lt;&lt; &quot;After job swapping:\n&quot;;
+    Show(sue);
+    Show(sidney);
+    cin.get();
+    return 0;
+}
+
+void Swap(int &amp;a, int &amp;b)
+{
+    cout &lt;&lt; &quot;Enter regular Swap.\n&quot;;
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+template &lt;typename T&gt;
+void Swap(T &amp;a, T &amp;b)
+{
+    cout &lt;&lt; &quot;Enter template Swap.\n&quot;;
+    T temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+template &lt;&gt; void Swap&lt;job&gt;(job &amp;j1, job &amp;j2)
+{
+    cout &lt;&lt; &quot;Enter specification Swap.\n&quot;;
+    double t1;
+    int t2;
+    t1 = j1.salary;
+    j1.salary = j2.salary;
+    j2.salary = t1;
+    t2 = j1.floor;
+    j1.floor = j2.floor;
+    j2.floor = t2;
+}
+
+void Show(job &amp;j)
+{
+    using namespace std;
+    cout &lt;&lt; j.name &lt;&lt; &quot; : $&quot; &lt;&lt; j.salary
+         &lt;&lt; &quot; on floor &quot; &lt;&lt; j.floor &lt;&lt; endl;
+}
+
+输出：
+i, j = 10, 20.
+Using compiler-generated int swapper:
+Enter regular Swap.
+Now i, j = 20, 10.
+Before job swapping:
+jhan : $4235454.76 on floor 7
+xyhan : $32424.56 on floor 9
+Enter specification Swap.
+After job swapping:
+jhan : $32424.56 on floor 9
+xyhan : $4235454.76 on floor 7
+</code></pre>
+<p><strong>🌈<!-- raw HTML omitted -->原型的匹配及完全匹配（难点）：<!-- raw HTML omitted --></strong></p>
+<p>在函数重载、函数模板、函数模板重载时，C++按以下过程决定使用哪个函数：</p>
+<ol>
+<li>创建候选函数列表。这里放名称一样的函数和模板函数；</li>
+<li>使用候选函数列表创建可行函数列表。这里是参数数目正确的函数；</li>
+<li>确定是否有最佳的可行函数。如果有，就使用它，否则调用出错。</li>
+</ol>
+<p>从最佳到最差的顺序如下：</p>
+<ol>
+<li>完全匹配，但常规函数优先于模板函数；</li>
+<li>提升转换（如char和shorts自动转换为int，float自动转换为double）；</li>
+<li>标准转换（如int转换为char，long转换为double）；</li>
+<li>用户定义的转换，如类声明中定义的转换。</li>
+</ol>
+<p>原型的完全匹配允许一些无关紧要的转换，如下表:</p>
+<table>
+<thead>
+<tr>
+<th>从实参</th>
+<th>到形参</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Type &amp;</td>
+</tr>
+<tr>
+<td>Type &amp;</td>
+<td>Type</td>
+</tr>
+<tr>
+<td>Type[]</td>
+<td>* Type</td>
+</tr>
+<tr>
+<td>Type (argument-list)</td>
+<td>Type (*) (argument-list)</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>const Type</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>volatile Type</td>
+</tr>
+<tr>
+<td>Type *</td>
+<td>const Type</td>
+</tr>
+<tr>
+<td>Type *</td>
+<td>volatile Type *</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+template&lt;class T&gt;
+T lesser(T a, T b)
+{
+    return a &lt; b ? a : b;
+}
+
+int lesser (int a, int b)
+{
+    a = a &lt; 0 ? -a : a;
+    b = b &lt; 0 ? -b : b;
+    return a &lt; b ? a : b;
+}
+
+int main()
+{
+    using namespace std;
+    int m = 20;
+    int n = -30;
+    double x = 15.5;
+    double y = 25.9;
+    cout &lt;&lt; lesser(m, n) &lt;&lt; endl;               // use #2
+    cout &lt;&lt; lesser(x, y) &lt;&lt; endl;               // use #1 with double
+    // 指出应使用模板函数
+    cout &lt;&lt; lesser&lt;&gt;(m, n) &lt;&lt; endl;             // use #1 with int
+    // 进行显示实例化
+    cout &lt;&lt; lesser&lt;int&gt;(x, y) &lt;&lt; endl;          // use #1 with int
+
+    return 0;
+}
+</code></pre>
+<p><strong>关键字decltype和后置返回类型（C++11）</strong>
+在C++98中，有时无法确定编写的模板函数中用到的中间变量类型，这时候decltype就派上了用场（像numpy中的astype）。</p>
+<pre><code class="language-cpp">int x;
+decltype(x) y;
+decltype(x + y) xpy = x + y;
+
+double x = 5.5;
+decltype ((xx)) r = xx;     // r2 is double &amp;
+decltype (xx) w = xx;       // w is double
+
+auto h(int x, float y) -&gt; double;
+template&lt;class T1, class T2&gt;
+auto gt(T1 x, T2 y) -&gt; decltype(x + y)
+{
+    ...
+    return x + y;
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hanin97.cn/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/" title="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}" target="_blank" rel="external">https://hanin97.cn/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/hanin97" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hanin97.cn/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/hanin97" target="_blank"><span class="text-dark">Jineng Han</span><small class="ml-1x">Jineng Han&#39;s homepage</small></a></h3>
+        <div>NUIST, master, A fan of VAE</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://hanin97.cn/2020/10/cpp-chapter7-%E5%87%BD%E6%95%B0/" title="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://hanin97.cn/2020/10/senet/"
+                    title="{{ replace .Name &#39;-&#39; &#39; &#39; | title }}"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+            data-target="#donateModal"><span>赏</span></button>
+        
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat"
+                data-mobile-sites="weibo,qq,qzone,wechat"></div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content donate">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="donate-box">
+                    <div class="donate-head">
+                        <p>感谢您的支持,我会继续努力的!</p>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/alipayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/wechatpayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+                        </div>
+                    </div>
+                    <div class="donate-footer">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
+                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
+                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/hanin97" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://hanin97.cn/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2020  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://hanin97.cn/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://hanin97.cn/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/hanin97.cn\/',
+            CONTENT_URL: 'https:\/\/hanin97.cn\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://hanin97.cn/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
