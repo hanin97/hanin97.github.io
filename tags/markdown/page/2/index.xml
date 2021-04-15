@@ -6,18 +6,54 @@
     <description>Recent content in markdown on Jineng Han&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Apr 2021 22:23:24 +0800</lastBuildDate>
     
         <atom:link href="https://hanin97.cn/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>H&amp;E-stained Whole Slide Image Deep Learning Predicts SPOP Mutation State in Prostate Cancer</title>
+      <title>ResNeXt: Aggregated Residual Transformations for Deep Neural Networks</title>
+      <link>https://hanin97.cn/2020/10/resnext/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnext/</guid>
+      <description>Aggregated Residual Transformations for Deep Neural Networks 1. 问题背景 Inception: split-transform-merge，这种策略希望用低的计算复杂度来近似大而密集的层的表达能力。虽然它有较高</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter9--内存模型和名称空间</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4/</guid>
+      <description>第9章 内存模型和名称空间 9.1 单独编译 一般将一个大型文件分解为三部分： 头文件：包含结构声明和使用这些结构的函数的原型（通常有函数原型、使用#de</description>
+    </item>
+    
+    <item>
+      <title>Microenvironmental Heterogeneity Parallels Breast cancer Progression: A Histology–Genomic Integration Analysis</title>
+      <link>https://hanin97.cn/2020/10/microenvironmental_heterogeneity_breast_yinyinyuan/</link>
+      <pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/microenvironmental_heterogeneity_breast_yinyinyuan/</guid>
+      <description>Microenvironmental Heterogeneity Parallels Breast cancer Progression: A Histology–Genomic Integration Analysis 个人总结 定量化肿瘤微环境异质性（肿瘤生态系统多样性指数[EDI]）； 将肿瘤微环境的异质性</description>
+    </item>
+    
+    <item>
+      <title>EfficientNet: Rethinking Model Scaling for Convolution Neural Networks</title>
+      <link>https://hanin97.cn/2020/10/efficientnet/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/efficientnet/</guid>
+      <description>EfficientNet: Rethinking Model Scaling for Convolution Neural Networks 预备知识 FLOPS：每秒浮点运算次数 FLOPs：浮点运算数 MAC：乘积累加运算（Multiply Accumulate） 所需显</description>
+    </item>
+    
+    <item>
+      <title>H&amp;E-stained Whole Slide Image Deep Learning Predicts SPOP Mutation State in Prostate cancer</title>
       <link>https://hanin97.cn/2020/10/spop_mutant_prostate/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hanin97.cn/2020/10/spop_mutant_prostate/</guid>
-      <description>H&amp;amp;E-stained Whole Slide Image Deep Learning Predicts SPOP Mutation State in Prostate Cancer 个人总结 1. 提供了一种由HE染色图像预测基因突变的方法。2. 多中心验证，且保存方法不一样（冰冻、福尔马林&amp;ndash</description>
+      <description>H&amp;amp;E-stained Whole Slide Image Deep Learning Predicts SPOP Mutation State in Prostate cancer 个人总结 1. 提供了一种由HE染色图像预测基因突变的方法。2. 多中心验证，且保存方法不一样（冰冻、福尔马林&amp;ndash</description>
     </item>
     
     <item>
@@ -30,12 +66,12 @@
     </item>
     
     <item>
-      <title>Computer Extracted Features from Initial H&amp;E Tissue Biopsies Predict Disease Progression for Prostate Cancer Patients on Active Surveillance</title>
+      <title>Computer Extracted Features from Initial H&amp;E Tissue Biopsies Predict Disease Progression for Prostate cancer Patients on Active Surveillance</title>
       <link>https://hanin97.cn/2020/10/cancers-prostate/</link>
       <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hanin97.cn/2020/10/cancers-prostate/</guid>
-      <description>Computer Extracted Features from Initial H&amp;amp;E Tissue Biopsies Predict Disease Progression for Prostate Cancer Patients on Active Surveillance 个人总结： 老特征用在新任务上，解决新问题，对比深度模型； 聚类图的画法。 scipy.cluster 任务： 使用提取的特征对主动监视（</description>
+      <description>Computer Extracted Features from Initial H&amp;amp;E Tissue Biopsies Predict Disease Progression for Prostate cancer Patients on Active Surveillance 个人总结： 老特征用在新任务上，解决新问题，对比深度模型； 聚类图的画法。 scipy.cluster 任务： 使用提取的特征对主动监视（</description>
     </item>
     
     <item>
@@ -107,7 +143,7 @@
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hanin97.cn/about/</guid>
-      <description>个人简介 本科毕业于南京信息工程大学自动化学院，现南京信息工程大学控制科学与工程在读研究生。 研究方向 计算病理学；深度学习；机器学习；图像处理；</description>
+      <description>个人简介 本科毕业于南京信息工程大学自动化学院，现南京信息工程大学控制科学与工程在读研究生，导师：徐军教授 研究方向 计算病理学；深度学习；机器学</description>
     </item>
     
     <item>

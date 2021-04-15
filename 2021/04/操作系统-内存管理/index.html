@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        操作系统--内存管理 - Jineng Han&#39;s homepage
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="@TOC 1 内存管理 1.1 内存使用与分段 时间：2021-03-28 场景：汇编中，call 40这条指令表明要跳到40这个地址（逻辑地址、相对地址）执行，那" />
+    <meta name="generator" content="Hugo 0.82.0 with theme pure" />
+    <title>操作系统--内存管理 - Jineng Han&#39;s homepage</title>
+    
+    
+    <link rel="stylesheet" href="https://hanin97.cn/css/style.min.b4b742918d33349bb411274c2c6de779fe2fda4d2101d2703f6bc0fc0a19edf2.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="操作系统--内存管理" />
+<meta property="og:description" content="@TOC 1 内存管理 1.1 内存使用与分段 时间：2021-03-28 场景：汇编中，call 40这条指令表明要跳到40这个地址（逻辑地址、相对地址）执行，那" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-15T22:13:39&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-15T22:13:39&#43;08:00" />
+<meta property="og:see_also" content="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" /><meta property="og:see_also" content="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%9F%BA%E7%A1%80/" /><meta property="og:see_also" content="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%A4%96%E8%AE%BE%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" /><meta property="og:see_also" content="https://hanin97.cn/2021/01/flock-lucheng/" /><meta property="og:see_also" content="https://hanin97.cn/2021/01/predicting-survival-from-colorectal-cancer-histology-slides-using-deep-learning-a-retrospective-multicenter-study/" />
+
+<meta itemprop="name" content="操作系统--内存管理">
+<meta itemprop="description" content="@TOC 1 内存管理 1.1 内存使用与分段 时间：2021-03-28 场景：汇编中，call 40这条指令表明要跳到40这个地址（逻辑地址、相对地址）执行，那"><meta itemprop="datePublished" content="2021-04-15T22:13:39&#43;08:00" />
+<meta itemprop="dateModified" content="2021-04-15T22:13:39&#43;08:00" />
+<meta itemprop="wordCount" content="2347">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="操作系统--内存管理"/>
+<meta name="twitter:description" content="@TOC 1 内存管理 1.1 内存使用与分段 时间：2021-03-28 场景：汇编中，call 40这条指令表明要跳到40这个地址（逻辑地址、相对地址）执行，那"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://hanin97.cn/" target="_blank">
+            <img class="img-circle img-rotate" src="https://hanin97.cn/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">Jineng Han</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">Some notes</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Nanjing, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>可时间巧合的船多到发狂<bar>少你我一趟</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link" rel="1">breast-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link" rel="6">classification-network<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link" rel="1">colorectal-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link" rel="6">computational-pathology<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link" rel="7">computer-vision<span
+               class="tag-list-count">7</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link" rel="1">domain-adaptation<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/gnn/" class="tag-list-link" rel="1">gnn<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/markdown/" class="tag-list-link" rel="2">markdown<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/prostate-cancer/" class="tag-list-link" rel="3">prostate-cancer<span
+               class="tag-list-count">3</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/cpp/" class="category-list-link">cpp</a><span class="category-list-count">15</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/operating-system/" class="category-list-link">operating-system</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/papers-reading/" class="category-list-link">papers-reading</a><span class="category-list-count">15</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/themes/" class="category-list-link">themes</a><span class="category-list-count">2</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link">breast-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link">classification-network</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link">colorectal-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link">computational-pathology</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link">computer-vision</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link">domain-adaptation</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/gnn/" class="tag-list-link">gnn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/prostate-cancer/" class="tag-list-link">prostate-cancer</a><span
+                    class="tag-list-count">3</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" class="title">操作系统  进程与线程</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:23:24 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%9F%BA%E7%A1%80/" class="title">操作系统--基础</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:23:08 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%A4%96%E8%AE%BE%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="title">操作系统--外设与文件系统</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:14:53 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="title">操作系统--内存管理</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:13:39 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/01/flock-lucheng/" class="title">Feature-driven Local Cell Graph (FLocK): New Computational Pathology-based Descriptors for Prognosis of Lung Cancer and HPV Status of Oropharyngeal Cancers</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-01-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-01-09</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"
+    >操作系统--内存管理</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2021-04-15 22:13:39 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/operating-system/"> operating system </a>
+</span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2347字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>@<a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86">TOC</a></p>
+<h1 id="1-内存管理">1 内存管理</h1>
+<h2 id="11-内存使用与分段">1.1 内存使用与分段</h2>
+<p>时间：2021-03-28</p>
+<p>场景：汇编中，call 40这条指令表明要跳到40这个地址（逻辑地址、相对地址）执行，那么把程序载入到内存中时，物理内存的40位置一定要存放对应的程序，如果不对内存进行分段的话，这显然不切实际，因为40这个地址可能存放了别的程序（事实上，0开始的位置存放的是操作系统），所以，程序在载入内存时应当找到一段空闲内存，并修改相应的逻辑地址为物理地址（==重定位==）。</p>
+<p>重定位也有两种方式：</p>
+<ol>
+<li>编译时（硬系统，如一些嵌入式的系统，效率高，但不灵活）</li>
+<li>载入时（灵活通过，==但目前来讲，程序载入进内存就不能移动了==）</li>
+</ol>
+<p>怎么才能让载入内存的程序实现移动呢？
+==swap==：如果进程发生阻塞，那把它放在内存中有点浪费内存，这时候将该进程睡眠，换出到磁盘（已经重定位过了物理地址），想执行的时候再换入，那么问题来了，怎么保证它换入时的物理内存地址和原来一样呢？==运行时重定位（地址翻译）== <code>base+offset</code></p>
+<p><code>base</code>保存在哪呢？==PCB====&gt;==基址寄存器==</p>
+<p>还有个问题：如果找不到一段足够大的空闲内存放程序怎么办呢？
+将程序分段，每个段有各自的特点、用途，如代码段（只读）、数据段（可写），每个段都是从0开始编址（用户可独立考虑每个段[==分治==]）
+这样就可以将一个程序的每个段分别放入内存，==段号+段内偏移==
+这时候PCB里要存放每个段的基址（进程段表LDT，和操作系统对应的段表GDT同理）</p>
+<h2 id="12-内存分区与分页memory-partition-and-paging">1.2 内存分区与分页（Memory Partition and Paging）</h2>
+<p>时间：2021-03-29</p>
+<p><strong>程序进入内存的步骤：</strong>
+1. 程序分段
+2. 在内存中找出空闲区域
+3. 将程序从磁盘中读到内存</p>
+<p><strong>为什么要分区？</strong>
+由上一小节很容易引出内存分区，因为要看哪些部分是空闲的，大小为多少</p>
+<p><strong>怎么分区呢？</strong>
+固定分区与可变分区</p>
+<p>可变分区的管理：请求分配，释放内存，再次申请（涉及到分配哪块空闲的）
+分配哪块呢？首选适配（第一个，快），最佳适配（大小最合适，O(n)），最差适配（每个段均匀）
+<img src="https://img-blog.csdnimg.cn/20210329221126223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><!-- raw HTML omitted -->实际的系统的物理内存并不使用内存分区，而是内存分页<!-- raw HTML omitted --></p>
+<p><strong>为什么要分页？</strong>
+解决内存分区导致的内存效率问题，比如内存碎片，需要将空闲分区合并（内存紧缩），但执行该操作的时候CPU不能干别的。</p>
+<p><strong>怎么分页？</strong>
+将内存分成，比如每4K一页，针对每个段内存请求，将段打散，系统一页一页地分配给这个段，（那重定位就变得复杂点，得知道它想跳转的地方被分到了哪个页，地址//页大小（根据这个找到页框的物理地址）+地址%页大小），需要用到页表（cr3），==MMU会自动计算==</p>
+<h2 id="13-多级页表和快表">1.3 多级页表和快表</h2>
+<p>时间：2021-04-01</p>
+<p>之前的分页方法有什么问题？
+为了提高内存的空间利用率，页应该小，但是页小了页表就大了</p>
+<p>怎么解决？
+尝试1：分配给进程中的逻辑页中，有的逻辑页用不到，（要问为什么用不到还要分配给它的话，考虑重定位时的逻辑页总数：地址//页大小 + 1），那就只保留用到的逻辑页的页表项
+问题1：这时的页表不连续，查找起来费时，顺序查找&ndash;&gt;折半查找，但这也费时，降低运行速度，页号连续的话查找就很快，怎么结合这两个呢？==多级页表就来了==</p>
+<p>尝试2：页目录表+页表（类比书的目录）
+可以，但访问内存的次数变多，时间上更奢侈</p>
+<p>尝试3：快表（TLB，相联快速存储，是寄存器）
+快表中存放最近使用的页表项，找不到的话再到多级页表中找
+要让快表好使，它的命中率一定要高，所以快表越大越好（但它贵呀，一般64~1024）；同时，置换的算法也很重要
+<img src="https://img-blog.csdnimg.cn/2021040121290171.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="14-段页结合的实际内存管理">1.4 段页结合的实际内存管理</h2>
+<p>程序（分段）&ndash;&gt;虚拟内存（地址空间，段-&gt;页）&ndash;&gt;物理内存（分页）
+逻辑地址&ndash;&gt;虚拟地址&ndash;&gt;物理地址
+段面向用户，页面向硬件
+虚拟内存不用管理吗？还是说浪费了也没事，有碎片就有碎片，反正不贵</p>
+<pre><code>段页式内存下程序如何载入内存？
+1. 在虚拟内存中分配段
+2. 将程序对应段放到虚拟内存对应段；
+3. 将虚拟内存的段分页放到物理内存；
+4. 建立页表；
+5. 使用。
+</code></pre>
+<h1 id="2-虚拟内存">2 虚拟内存</h1>
+<p>使用换入换出实现虚拟内存。</p>
+<h2 id="21-请求调页与内存换入swap-in">2.1 请求调页与内存换入（Swap in）</h2>
+<p>2021-04-06
+物理内存小于虚拟内存，虚拟内存比较规整，就算物理内存没那么大，虚拟内存也能让用户感觉可以使用那么大，不用因为物理内存的大小而头疼，那么就<strong>使用换入换出实现“大内存”</strong>，用到程序的哪段就把这段从硬盘换入到物理内存。</p>
+<h2 id="22-内存换出swap-out">2.2 内存换出（Swap out）</h2>
+<p>2021-04-07
+还记得请求调页时候的<code>get_free_page</code>吗？而内存是有限的，并不能总是获得新的页，需要选择一页淘汰，换出到磁盘，那怎么选择呢？用缺页次数来评价方案的好坏。</p>
+<ul>
+<li>FIFO，刚换出去又要换进来的话，就很麻烦</li>
+<li>MIN，选最远将使用的页淘汰，是最优方案，但是要知道将来发生的事</li>
+<li>LRU（Least recently used），用过去的历史预测将来，选最近最长一段时间没有使用的页淘汰</li>
+</ul>
+<p>LRU怎么实现呢？
+<strong>时间戳（time stamp）</strong>
+每页维护一个时间戳，记录该页在第几个时刻使用到了。（每执行一条指令，都要维护这个时间戳）<br>
+<strong>页码栈</strong>
+每执行一条指令，都要更新栈</p>
+<p>LRU近似实现SCR[又叫Clock Algorithm]（因为准确实现太奢侈）
+将时间计数变为是和否，每页加1个引用位R，每次访问一页时，硬件自动设置该位（就不用软件维护时间戳了，直接MMU），选择淘汰页：扫描该位，是1时清0，并继续扫描，是0时淘汰。</p>
+<p>但如果缺页很少的话，几乎所有的R都为1（因为只有缺页时才会将0变为1），那需要换页的时候，指针会循环一遍，把所有的1变为0，然后换掉第一次指向的页，SCR退化为FIFO。
+原因：记录了太长的历史信息
+怎么办：定时清除R位（再来一个快的扫描指针），确保“最近”</p>
+<p>给进程分配多少页框（frame）呢？
+求工作集，覆盖局部。
+与页框分配有关的问题：系统颠簸
+<img src="https://img-blog.csdnimg.cn/20210407223739931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="操作系统--内存管理" target="_blank" rel="external">https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://hanin97.cn/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hanin97.cn/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://hanin97.cn/" target="_blank"><span class="text-dark">Jineng Han</span><small class="ml-1x">Some notes</small></a></h3>
+        <div>NUIST, master, A fan of VAE</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://hanin97.cn/2021/01/flock-lucheng/" title="Feature-driven Local Cell Graph (FLocK): New Computational Pathology-based Descriptors for Prognosis of Lung Cancer and HPV Status of Oropharyngeal Cancers"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%A4%96%E8%AE%BE%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"
+                    title="操作系统--外设与文件系统"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+            data-target="#donateModal"><span>赏</span></button>
+        
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat"
+                data-mobile-sites="weibo,qq,qzone,wechat"></div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content donate">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="donate-box">
+                    <div class="donate-head">
+                        <p>感谢您的支持,我会继续努力的!</p>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/alipayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/wechatpayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+                        </div>
+                    </div>
+                    <div class="donate-footer">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
+                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
+                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/hanin97" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://hanin97.cn/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2020  -
+    2021
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://hanin97.cn/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://hanin97.cn/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/hanin97.cn\/',
+            CONTENT_URL: 'https:\/\/hanin97.cn\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://hanin97.cn/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
