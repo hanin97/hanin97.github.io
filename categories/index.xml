@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Jineng Han&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Fri, 16 Apr 2021 16:14:23 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 16 Apr 2021 21:58:10 +0800</lastBuildDate>
     
         <atom:link href="https://hanin97.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据结构与算法--01概论</title>
+      <link>https://hanin97.cn/2021/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-01%E6%A6%82%E8%AE%BA/</link>
+      <pubDate>Fri, 16 Apr 2021 21:58:10 +0800</pubDate>
+      
+      <guid>https://hanin97.cn/2021/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-01%E6%A6%82%E8%AE%BA/</guid>
+      <description>记：清华大学邓俊辉老师数据结构与算法视频学习笔记。 1 概论 1.0 知识点 5个问题： 什么是计算&amp;ndash;课程的目标 什么是好的计算&amp;ndash;评判</description>
+    </item>
     
     <item>
       <title>计算机网络--1 概述</title>
@@ -180,15 +189,6 @@
       
       <guid>https://hanin97.cn/2020/10/resnest/</guid>
       <description>ResNeSt: Split-Attention Networks 1. 提出背景 现如今用于图像分类的网络常被用于其他任务，如目标检测、实例分割等，而在其中经常被用到的网络就是ResNet，但这毕竟是为图像</description>
-    </item>
-    
-    <item>
-      <title>ResNet: Deep Residual Learning for Image Recognition</title>
-      <link>https://hanin97.cn/2020/10/resnet/</link>
-      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanin97.cn/2020/10/resnet/</guid>
-      <description>Deep Residual Learning for Image Recognition 1. 问题背景 当时网络的深度浅，深的网络很难训练（梯度爆炸、难以拟合、退化问题：深度越深，精度趋于饱和后迅速衰减），但是网络的深度是</description>
     </item>
     
   </channel>

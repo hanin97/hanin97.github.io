@@ -6,10 +6,19 @@
     <description>Recent content on Jineng Han&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Fri, 16 Apr 2021 16:14:23 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 16 Apr 2021 21:58:10 +0800</lastBuildDate>
     
         <atom:link href="https://hanin97.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ResNet: Deep Residual Learning for Image Recognition</title>
+      <link>https://hanin97.cn/2020/10/resnet/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnet/</guid>
+      <description>Deep Residual Learning for Image Recognition 1. 问题背景 当时网络的深度浅，深的网络很难训练（梯度爆炸、难以拟合、退化问题：深度越深，精度趋于饱和后迅速衰减），但是网络的深度是</description>
+    </item>
     
     <item>
       <title>ResNeXt: Aggregated Residual Transformations for Deep Neural Networks</title>
