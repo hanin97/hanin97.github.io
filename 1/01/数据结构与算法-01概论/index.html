@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - Jineng Han&#39;s homepage
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="author: &amp;ldquo;Jineng Han&amp;rdquo; title: &amp;ldquo;数据结构与算法&amp;ndash;01概论&amp;rdquo; date: 2021-04-16T21:58:10&#43;08:00 draft: false description: &amp;quot;&amp;quot; categories: [ &amp;ldquo;数据结构与算法&amp;rdquo;, ] series: [&amp;ldquo;Themes Guide&amp;rdquo;]" />
+    <meta name="generator" content="Hugo 0.82.0 with theme pure" />
+    <title> - Jineng Han&#39;s homepage</title>
+    
+    
+    <link rel="stylesheet" href="https://hanin97.cn/css/style.min.b4b742918d33349bb411274c2c6de779fe2fda4d2101d2703f6bc0fc0a19edf2.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="author: &ldquo;Jineng Han&rdquo; title: &ldquo;数据结构与算法&ndash;01概论&rdquo; date: 2021-04-16T21:58:10&#43;08:00 draft: false description: &quot;&quot; categories: [ &ldquo;数据结构与算法&rdquo;, ] series: [&ldquo;Themes Guide&rdquo;]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hanin97.cn/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-01%E6%A6%82%E8%AE%BA/" /><meta property="article:section" content="posts" />
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="author: &ldquo;Jineng Han&rdquo; title: &ldquo;数据结构与算法&ndash;01概论&rdquo; date: 2021-04-16T21:58:10&#43;08:00 draft: false description: &quot;&quot; categories: [ &ldquo;数据结构与算法&rdquo;, ] series: [&ldquo;Themes Guide&rdquo;]">
+
+<meta itemprop="wordCount" content="3759">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="author: &ldquo;Jineng Han&rdquo; title: &ldquo;数据结构与算法&ndash;01概论&rdquo; date: 2021-04-16T21:58:10&#43;08:00 draft: false description: &quot;&quot; categories: [ &ldquo;数据结构与算法&rdquo;, ] series: [&ldquo;Themes Guide&rdquo;]"/>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://hanin97.cn/" target="_blank">
+            <img class="img-circle img-rotate" src="https://hanin97.cn/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">Jineng Han</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">Time goes by so fast, people go in and out of your life.</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Nanjing, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>可世间巧合的船多到发狂<bar>少你我一趟</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link" rel="1">breast-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link" rel="6">classification-network<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link" rel="1">colorectal-cancer<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link" rel="6">computational-pathology<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link" rel="7">computer-vision<span
+               class="tag-list-count">7</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link" rel="1">domain-adaptation<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/gnn/" class="tag-list-link" rel="1">gnn<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hanin97.cn/tags/prostate-cancer/" class="tag-list-link" rel="3">prostate-cancer<span
+               class="tag-list-count">3</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/computer-networking/" class="category-list-link">computer-networking</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/cpp/" class="category-list-link">cpp</a><span class="category-list-count">15</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/operating-system/" class="category-list-link">operating-system</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/papers-reading/" class="category-list-link">papers-reading</a><span class="category-list-count">15</span></li>
+            <li class="category-list-item"><a href="https://hanin97.cn/categories/project/" class="category-list-link">project</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/breast-cancer/" class="tag-list-link">breast-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/classification-network/" class="tag-list-link">classification-network</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/colorectal-cancer/" class="tag-list-link">colorectal-cancer</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computational-pathology/" class="tag-list-link">computational-pathology</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/computer-vision/" class="tag-list-link">computer-vision</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/domain-adaptation/" class="tag-list-link">domain-adaptation</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/gnn/" class="tag-list-link">gnn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hanin97.cn/tags/prostate-cancer/" class="tag-list-link">prostate-cancer</a><span
+                    class="tag-list-count">3</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/s2netforprostate/" class="title">S2NetForProstate</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-22 22:33:10 &#43;0800 CST" itemprop="datePublished">2021-04-22</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1%E6%A6%82%E8%BF%B0/" class="title">计算机网络--1 概述</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-16 16:14:23 &#43;0800 CST" itemprop="datePublished">2021-04-16</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" class="title">操作系统  进程与线程</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:23:24 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%9F%BA%E7%A1%80/" class="title">操作系统--基础</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:23:08 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hanin97.cn/2021/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="title">操作系统--内存管理</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-04-15 22:13:39 &#43;0800 CST" itemprop="datePublished">2021-04-15</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-01%E6%A6%82%E8%AE%BA/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3759字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <hr>
+<h2 id="aliases-migrate-from-jekyl">author: &ldquo;Jineng Han&rdquo;
+title: &ldquo;数据结构与算法&ndash;01概论&rdquo;
+date: 2021-04-16T21:58:10+08:00
+draft: false
+description: &quot;&quot;
+categories: [
+&ldquo;数据结构与算法&rdquo;,
+]
+series: [&ldquo;Themes Guide&rdquo;]
+aliases: [&ldquo;migrate-from-jekyl&rdquo;]</h2>
+<p>@[TOC](1 概论)</p>
+<p>记：清华大学邓俊辉老师<a href="https://www.bilibili.com/video/BV1jt4y117KR?from=search&amp;seid=9699712924056767689">数据结构与算法</a>视频学习笔记。</p>
+<h1 id="10-知识点">1.0 知识点</h1>
+<p><strong>5个问题：</strong></p>
+<ol>
+<li>什么是计算&ndash;课程的目标</li>
+<li>什么是好的计算&ndash;评判DSA优劣的参照</li>
+<li>度量DSA性能的尺度&ndash;渐进复杂度，不需要太精细</li>
+<li>怎么度量&ndash;DSA性能度量的方法</li>
+<li>DSA的设计及其优化</li>
+</ol>
+<p><strong>2个拓展：</strong></p>
+<ol>
+<li>理论模型与实际性能的差异</li>
+<li>DSA优化的极限（下界）</li>
+</ol>
+<hr>
+<h1 id="11-计算">1.1 计算</h1>
+<p>对象：规律、技巧
+目标：高效、低耗</p>
+<h2 id="111-例子">1.1.1 例子</h2>
+<p>绳索计算机：垂线
+尺规计算机：三等分，包含重复使用的子程序（做平行线）</p>
+<h2 id="112-算法">1.1.2 算法</h2>
+<p>输入：问题
+输出：答案
+正确性
+确定性：由基本操作组成的序列
+可行性：可实现，可在常数时间内完成
+有穷性：对任何输入，经过有穷次基本操作，都可以得到输出</p>
+<h2 id="113-有穷性">1.1.3 有穷性</h2>
+<p>序列Hailstone
+<img src="https://img-blog.csdnimg.cn/20210416225210172.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+不能证明它是有穷的，也没有反例证明它是无穷的
+<!-- raw HTML omitted -->写程序时经常写出死循环，栈溢出。<!-- raw HTML omitted --></p>
+<h2 id="114-好算法">1.1.4 好算法</h2>
+<p><strong>==正确：==</strong> 符合语法，能够编译、链接，能够处理<!-- raw HTML omitted -->简单的、大规模的、一般性的、退化的、任意合法的<!-- raw HTML omitted -->输入
+健壮：能辨别不合法的输入并做适当处理，而不致非正常退出
+<strong>可读：</strong> 结构化 + 准确命名 + 注释
+<strong>==效率：==</strong> 速度尽可能快，存储空间尽可能少</p>
+<blockquote>
+<p>Algorithms + Data Structures = Programs
+(Algorithms + Data Structures) x Efficiency = Computation</p>
+</blockquote>
+<hr>
+<h1 id="12-计算模型">1.2 计算模型</h1>
+<p>正确性：不好数学证明
+<strong>成本：</strong> 运行时间 + 所需存储空间</p>
+<p><strong>特定算法 + 不同实例</strong>
+如果用$T_A(P)$表示算法A求解问题实例P的计算成本，意义不大，因为可能出现的问题实例太多；
+如果用$T_A(n)$表示算法A求解某一问题规模为n的实例所需的计算成本，仍然存在同一问题等规模的不同实例的计算成本不同（最好情况，最坏情况），应该首先考虑最坏情况；</p>
+<p><strong>特定问题 + 不同算法</strong>
+如果仅用实验统计，表面上很直接，但不足以准确反映算法的真正效率，因为算法的效率与输入规模、类型，使用的语言、编译器、体系结构、操作系统的状态有关；
+所以需要抽象出一个理想的平台或模型：图灵机（Turing Machine）、Random Access Machine（RAM），一般计算工具的简化与抽象，独立于具体的平台，<strong>将算法的运行时间转换为算法需要执行的基本操作次数。</strong></p>
+<hr>
+<h1 id="13-大o">1.3 大O</h1>
+<p><strong>==渐进分析：大O记号==</strong>
+$T(n)=O(f(n))， iff  \exists c &gt; 0，当n &raquo; 2时，有T(n) &lt; cf(n)$
+$\sqrt{5n[3n(n+2)+4]+6} &lt; \sqrt{5n[6n^2+4]+6}&lt; \sqrt{35n^3+6}&lt;6n^{1.5}=O(n^{1.5})$
+与$T_A(n)$相比，$f(n)$更简洁，f(n)的常系数可忽略，低次项可忽略。</p>
+<p><strong>渐进分析：其他记号</strong>
+最好情况（下界）：$T(n)=\Omega(f(n))$
+中间情况：$T(n)=\Theta(f(n))$</p>
+<p><strong>==刻度==：</strong></p>
+<ol>
+<li>$O(1)$：2 = 2013 = 2013 x 2013 = O(1)</li>
+<li>$logn$：常底数、常次幂、对数多项式都可以通过数学变换忽略掉</li>
+<li>$O(n^c)$：多项式复杂度，只看最高次</li>
+<li>$O(n)$：线性复杂度</li>
+<li>$O(2^n)$：指数，通常认为不可忍受</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20210417215204191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+<strong>一个指数复杂度的例子：</strong>
+S包含n个正整数，$\sum{S}=2m$，S是否有子集T，满足$\sum{T}=m$？
+NP-complete问题</p>
+<hr>
+<h1 id="14-算法分析">1.4 算法分析</h1>
+<p><strong>去粗存精地估算</strong>
+两个主要任务 = 正确性（不变性 x 单调性）+ 复杂度
+在计算复杂度的时候，真的需要将算法描述为RAM的基本指令，再统计累计的执行次数吗？
+不必哦！只要渐进，在渐进的意义下，C++等高级语言的基本指令等效于常数条RAM的基本指令。</p>
+<p><strong>主要方法：</strong></p>
+<ol>
+<li>迭代：级数求和</li>
+<li>递归：递归跟踪 + 递推方程</li>
+<li>猜测 + 验证</li>
+</ol>
+<hr>
+<h2 id="141-级数">1.4.1 级数</h2>
+<ol>
+<li>算术级数：与末项平方同阶
+$T(n)=1+2+3+&hellip;+n=n(n+1)/2=O(n^2)$</li>
+<li>幂方级数：比幂次高出一阶（<strong>咋求的呀</strong>）
+$T_2(n)=1^2+2^2+3^2+&hellip;+n^2=n(n+1)(2n+1)/6=O(n^3)$
+$\sum{_{k=0}^n} \approx \int{_0^nx^{d+1}dx}= \frac{1}{d+1}x^{d+1}|_0^n=O(n^{d+1})$</li>
+<li>几何级数：与末项同阶
+$T_a(n)=a^0+a^1+a^2+&hellip;+a^n=(a^{n+1}-1)/(a-1)=O(a^n)$</li>
+<li>收敛级数
+O(1)</li>
+<li><strong>调和级数</strong>
+$h(n)=1+\frac{1}{2}+\frac{1}{3}+&hellip;+\frac{1}{n}=\Theta(logn)$</li>
+<li><strong>对数级数</strong>
+$log1+log2+log3+&hellip;+logn=log(n!)=\Theta(nlogn)$</li>
+</ol>
+<hr>
+<h2 id="142-循环-vs-级数">1.4.2 循环 vs. 级数</h2>
+<p>可以用画图的方法帮助计算</p>
+<ul>
+<li>
+<p>算术级数$\sum{_{i=0}^{n-1}}n = n+n+n+&hellip;+n=O(n^2)$
+<img src="https://img-blog.csdnimg.cn/20210418210037255.png" alt="在这里插入图片描述"></p>
+<pre><code class="language-cpp">for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; n; j++)
+        O1Operation(i, j);
+</code></pre>
+<pre><code></code></pre>
+</li>
+<li>
+<p>算术级数$\sum{_{i=0}^{n-1}}i = 0+1+2+&hellip;+(n-1)=\frac{n(n-1)}{2}=O(n^2)$
+<img src="https://img-blog.csdnimg.cn/20210418210120406.png" alt="在这里插入图片描述"></p>
+<pre><code class="language-cpp">for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; i; j++)
+        O1Operation(i, j);
+</code></pre>
+<pre><code></code></pre>
+</li>
+<li>
+<p>几何级数$1+2+4+&hellip;+2^{log_2(n-1)}=O(n)$
+<img src="https://img-blog.csdnimg.cn/20210418210207859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre><code class="language-cpp">for (int i = 0; i &lt; n; i &lt;&lt;= 1)
+    for (int j = 0; j &lt; i; j++)
+        O1Operation(i, j);
+</code></pre>
+<pre><code></code></pre>
+</li>
+<li>
+<p>几何级数$0+0+1+2<em>2+3</em>4+4<em>8+&hellip;=\sum{_{k=0&hellip;logn}(k</em>2^{k-1})}=O(logn*2^{logn})=nlogn$
+$\sum{_{k=0}^n}\lceil log_2k \rceil=O(nlogn)$
+<img src="https://img-blog.csdnimg.cn/20210418212709925.png" alt="在这里插入图片描述"></p>
+<pre><code class="language-cpp">for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; i; j += j)
+        O1Operation(i, j);
+</code></pre>
+<pre><code>
+
+</code></pre>
+</li>
+</ul>
+<h2 id="143-取非极端元素">1.4.3 取非极端元素</h2>
+<p>给定整数子集S，|S| &gt;= 3，找出其中既不是最大值，又不是最小值的元素。
+常数时间复杂度</p>
+<h2 id="144-冒泡排序">1.4.4 冒泡排序</h2>
+<p>初始版本</p>
+<pre><code class="language-cpp">// 外循环的终止条件是啥？没错，就是sotred，赋值的同时也充当判断条件
+void bubblesort(int A[], int n) {
+	for (bool sorted = false; sorted = !sorted; n--)
+		for (int i = 1; i &lt; n; i++)
+			if (A[n-1] &gt; A[i]) {
+				swap(A[i-1], A[i]);
+				sorted = false;
+			}
+}
+</code></pre>
+<p><strong>分析：</strong>
+不变性：经k轮扫描交换后，最大的k个元素必然就位
+单调性：经k轮扫描交换后，问题规模缩减至n-k
+正确性：经至多n趟扫描惠普，算法必然终止，且能给出正确解答</p>
+<h2 id="145-封底估算back-of-the-envelope">1.4.5 封底估算（Back-of-the-Envelope）</h2>
+<p><img src="https://img-blog.csdnimg.cn/2021041822493534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<hr>
+<h1 id="15-迭代与递归">1.5 迭代与递归</h1>
+<blockquote>
+<p><code>迭代乃人工，递归方神通</code>
+但是递归的效率通常不是最佳的，迭代体现出更强的优势</p>
+</blockquote>
+<h2 id="151-数组求和迭代">1.5.1 数组求和：迭代</h2>
+<pre><code class="language-cpp">int sumI(int A[], int n) {
+	int sum = 0;	// O(1)
+	for (int i = 0; i &lt; n; i++)		// O(n)
+		sum += A[i];	// O(1)
+	return sum;		// O(1)
+}
+</code></pre>
+<p>分析：</p>
+<blockquote>
+<p>时间复杂度：O(n)，空间复杂度（除输入本身）：O(2)
+每循环一次，规模缩小1
+引出<code>减而治之</code></p>
+</blockquote>
+<h2 id="152-数组求和线性递归减而治之">1.5.2 数组求和：线性递归（减而治之）</h2>
+<pre><code class="language-cpp">sum(int A[], int n) {
+	return (n &lt; 1) ? 0 : sum(A, n-1) + A[n-1];
+	//					  缩减问题  +  平凡问题：可直接求解
+}
+</code></pre>
+<p>递归跟踪分析：</p>
+<blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210419193519188.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+时间复杂度：O(n)，所有递归实例时间的总和，缩减问题的时间并入子问题</p>
+</blockquote>
+<p>递推方程分析：</p>
+<blockquote>
+<p>T(n) = T(n-1) + O(1)
+T(0) = O(1)
+求解：
+T(n) - n = T(n-1) - (n-1) = &hellip; = T(2) - T(1) = T(1) - 1 = T(0)</p>
+</blockquote>
+<h2 id="153-数组倒置减而治之">1.5.3 数组倒置（减而治之）</h2>
+<pre><code class="language-cpp">// 递归版
+void reverse(int* A, int low, int high) {
+	// 问题规模的奇偶性不变，因为每次变化2，那最后的情况有两种：
+	// 剩最小的奇数1，最小的偶数0，需要两个递归基，low==high，不用变，low &gt; high，不用变
+	if (low &lt; high) {
+		swap(A[low], A[high]);		// 平凡问题
+		reverse(A, low+1, high-1);	// 缩减问题
+	}
+}
+// 迭代原始版
+next:
+	if (low &lt; high) {
+		swap(A[low], A[high]);
+		low++; high--;
+		goto next;
+	}
+// 迭代精简版
+while (low &lt; high) swap(A[low++], A[high--]);
+</code></pre>
+<h2 id="154-分而治之">1.5.4 分而治之</h2>
+<p>将大规模问题划分为若干个子问题（通常两个），规模<strong>大体相当</strong>，合并子问题的解。
+<img src="https://img-blog.csdnimg.cn/20210419200731410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+数组求和：二分递归</p>
+<pre><code class="language-cpp">sum (int A[], int lo, int hi) {
+	if (lo == hi) return A[lo];		// 递归基
+	int mi = (lo + hi) &gt;&gt; 2;
+	return sum(A, lo, mi) + sum(A, mi + 1, hi);
+}
+</code></pre>
+<p>递归跟踪分析：</p>
+<blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210419202123110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+所有递归实例时间总和（去掉递归调用本身的时间去掉）
+$T(n)=O(1) * (2^0, 2^1, 2^2, + &hellip; + 2^{logn})=O(1) * (2^{logn+1}-1)=O(n)$
+<!-- raw HTML omitted -->几何级数的总和与末项同阶<!-- raw HTML omitted --></p>
+</blockquote>
+<p>递推方程分析：</p>
+<blockquote>
+<p>递推基：sum(A, lo, lo)
+$T(0)=2<em>T(n/2)+O(1)$，O(1)为归并时间
+$T(1)=1$，<!-- raw HTML omitted -->为什么这里不是T(0)?<!-- raw HTML omitted --><!-- raw HTML omitted -->因为递推基的规模为1呀<!-- raw HTML omitted -->
+$$
+T(n) = 2</em>T(n/2) + c_1 \<br>
+T(n) + c_1 = 2(T(n/2)+c_1)=2^2*(T(n/4)+c_1)
+=&hellip;
+=2^{logn}(T(1)+c_1)
+=2nc_1\<br>
+=&gt;T(n)=O(n)
+$$</p>
+</blockquote>
+<h2 id="155-max2">1.5.5 Max2</h2>
+<p>找出数组中最大的两个元素，比较次数尽可能少</p>
+<p>迭代1，比较2n-3次</p>
+<pre><code class="language-cpp">void max2(int A[], int lo, int hi, int &amp; x1, int &amp; x2) {
+	for (x1 = lo, int i = lo + 1; i &lt; hi; i++)
+		if A[x1] &lt; A[i] x1 = i;
+	for (x2 = lo, int i = lo + 1; i &lt; x1; i++)
+		if A[x2] &lt; A[i] x2 = i;
+	for (int i = x1 + 1; i &lt; hi; i++)
+		if A[x2] &lt; A[i] x2 = i;
+}
+</code></pre>
+<p>迭代2，双指针，妙啊，比较次数：最好n-1，最坏2n-3</p>
+<pre><code class="language-cpp">void max(int A[], int lo, int hi, int &amp; x1, int &amp; x2) {
+	if (A[x1 = lo] &lt; A[x2 = lo + 1]) swap(x1, x2);
+	for (int i = lo + 2; i &lt; hi; i++)
+		if (A[x2] &lt; A[i])
+			if (A[x1] &lt; A[x2 = i])
+				swap(x1, x2);
+}
+</code></pre>
+<p>递归 + 分治</p>
+<pre><code class="language-cpp">void max2(int A[], int lo, int hi, int &amp; x1, int &amp; x2) {
+	if (lo + 2 == hi)
+		x1 = (A[lo] &gt; A[lo + 1]) ? A[lo] : A[lo + 1];
+	if (lo + 3 == hi) {
+		if (A[lo] &gt; A[lo + 1]) {
+			if (A[lo + 1] &gt; A[lo + 2]) {
+				x1 = A[lo]; x1 = A[lo + 1];
+			}
+			else {
+				if (A[lo] &gt; A[lo + 2]) {
+					x1 = A[lo]; x2 = A[lo + 2];
+				}
+				else {x1 = A[lo + 2]; x2 = A[lo];}
+			}
+		else {
+			if (A[lo] &gt; A[lo + 2]) {
+				x1 = A[lo + 1]; x2 = A[lo];
+			}
+			else {
+				if (A[lo + 1] &gt; A[lo + 2]) {
+					x1 = A[lo + 1]; x2 = A[lo + 2];
+				}
+				else {x1 = A[lo + 2]; x2 = A[lo + 1];}
+			}
+		}
+		}
+	}
+	int mi = (lo + hi) / 2;
+	int x1L, x2L; max2(A, lo, mi, x1L, x2L);
+	int x2R, x2Rl max2(A, mi, hi, x1R, x2R);
+	if (A[x1L] &gt; A[x1R]) {
+		x1 = x1L; x2 = (A[x2L] &gt; A[x1R]) ? x2L : x1R;
+	}
+	else {
+		x1 = x1R; x2 = (A[x1L] &gt; A[x2R]) ? x1L : x2R;
+	}
+}
+</code></pre>
+<p>分析：</p>
+<blockquote>
+<p>递推基：问题规模的奇偶性不变，两个递推基：</p>
+<ol>
+<li>大于等于2的最小偶数，2，（<!-- raw HTML omitted -->为什么要大于2呢？<!-- raw HTML omitted --><!-- raw HTML omitted -->因为要求解两个数呀<!-- raw HTML omitted -->）</li>
+<li>大于等于2的最小奇数，3</li>
+</ol>
+<p>最差情况剩两组大小为3的数组：
+$T(n) + 2 = 2(T(n/2)+2)&lt;=2^{log(n/3)}(T(3)+2)=5n/3=&gt;T(n)=5n/3-2$</p>
+</blockquote>
+<hr>
+<h1 id="16-动态规划">1.6 动态规划</h1>
+<p>通过递归找出算法的本质，给出初步解，再将其转化为等效的迭代形式。</p>
+<h2 id="161-fib">1.6.1 FIB</h2>
+<p><strong>fib()：递归</strong>
+$fib(n)=fib(n-1)+fib(n-2):{0, 1, 1, 2, 3, 5, 8, &hellip;}$</p>
+<pre><code class="language-cpp">int fib(n) { return (n &lt; 2) ? n : fib(n-1) + fib(n-2); }
+</code></pre>
+<p><!-- raw HTML omitted -->当n稍微大点（如64）时，运行速度很慢，为什么呢？<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->直觉上看，它是将一个规模大的问题分解成两个规模小的子问题，这两个子问题有交集，其中一个子问题是另一个问题的子问题。<!-- raw HTML omitted -->
+<strong>递推方程分析：</strong></p>
+<blockquote>
+<p>递推基：$T(0) = T(1) = 1;$
+方程：$T(n) = T(n-1) + T(n-2) + 1$
+求解：令$S(n)=[T(n)+1]/2$，则$S(0)=1=fib(1),S(1)=1=fib(2)$
+故$S(n)=S(n-1)+S(n-2)=fib(n+1)$，
+$T(n)=2<em>S(n)-1=2</em>fib(n+1)-1=O(fib(n+1))=O(\Phi^n)=O(2^n)$</p>
+</blockquote>
+<p><strong>封底估算：</strong></p>
+<blockquote>
+<p>$\Phi^{36}=2^{25}, \Phi^{43}=2^{30}={10^3}^3=10^9flo=1sec$
+$\Phi^{5}=10,\Phi^{67}=10^{14}flo=10^5sec=1day$</p>
+</blockquote>
+<p><strong>递归跟踪：</strong></p>
+<blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210420192030818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzkyOTU5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+<!-- raw HTML omitted -->有大量重复的递归实例，能不能每个实例只计算一次？<!-- raw HTML omitted -->
+类比：爬楼梯，每次只能爬1、2阶，到第6阶有几种走法？</p>
+</blockquote>
+<p><strong>fib()回归迭代</strong></p>
+<ol>
+<li>记忆法：将已计算过的实例的结果制表备查</li>
+<li>动态规划
+颠倒计算方向，由自顶向下递归变为自底向上迭代
+两个变量记录当前相邻的两个数，滚动向前
+<pre><code class="language-cpp">f = 0; g = 1;
+while (0 &lt; n--) {
+    g = g + f;
+    f = g - f;
+}
+return g;
+</code></pre>
+<p>``</p>
+</li>
+</ol>
+<h2 id="162-最长公共子序列lcs">1.6.2 最长公共子序列LCS</h2>
+<p><strong>LCS：递归</strong>
+A[0, n]; B[0, m]
+递归基：n = -1 or m = -1, LCS is &quot;&quot;</p>
+<pre><code class="language-cpp">if (A[n] == A[m] == 'X') LCS(A[0, n], B[0, m]) = LCS(A[0, n), B[0, m)) + 'X'; // 减而治之
+else LCS = max(LCS(A[0, n), B[0, m]), LCS(A[0, n], B[0, m)) // 分而治之
+</code></pre>
+<p><strong>分析：</strong></p>
+<blockquote>
+<p>同一个递归实例会被多次唤醒，但实例个数共n+m，其实只需要计算n+m次</p>
+</blockquote>
+<p><strong>改进：</strong>
+颠倒计算方向，从LCS(A[0], B[0])出发依次计算出所有项</p>
+<pre><code class="language-cpp">vertor&lt;char&gt; vecA, vecB;
+int length[n+1][m+1] = {0};
+for (int i = 0; i &lt; n; i++) vecA.push_bask(A[i]);
+for (int i = 0; i &lt; m; i++) vecA.push_bask(B[i]);
+for (int i = 0; i &lt; n; i++)
+	for (int j = 0; j &lt; m; j++) {
+			if (vecA.at(i) == vecB.at(j)) length[i+1][j+1] = length[i][j] + 1;
+			else length[i+1][j+1] = max(length[i][j+1], length[i+1][j]);
+	}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hanin97.cn/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-01%E6%A6%82%E8%AE%BA/" title="" target="_blank" rel="external">https://hanin97.cn/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-01%E6%A6%82%E8%AE%BA/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://hanin97.cn/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hanin97.cn/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://hanin97.cn/" target="_blank"><span class="text-dark">Jineng Han</span><small class="ml-1x">Time goes by so fast, people go in and out of your life.</small></a></h3>
+        <div>NUIST, master, A fan of VAE</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="next">
+                <a href="https://hanin97.cn/about/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+            data-target="#donateModal"><span>赏</span></button>
+        
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat"
+                data-mobile-sites="weibo,qq,qzone,wechat"></div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content donate">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="donate-box">
+                    <div class="donate-head">
+                        <p>感谢您的支持,我会继续努力的!</p>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/alipayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                            <div class="donate-payimg">
+                                <img src="https://hanin97.cn/donate/wechatpayimg.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+                        </div>
+                    </div>
+                    <div class="donate-footer">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
+                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
+                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <br>
+  <h5 id="wc" style="font-size: 1rem;text-align: center;">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</h5>
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/hanin97" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://hanin97.cn/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2020  -
+    2021
+    
+    <span id="busuanzi_container_site_pv">
+      本站访问量：<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    &nbsp;
+    <span id="busuanzi_container_site_uv">
+        您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+    </span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://hanin97.cn/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://hanin97.cn/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/hanin97.cn\/',
+            CONTENT_URL: 'https:\/\/hanin97.cn\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://hanin97.cn/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

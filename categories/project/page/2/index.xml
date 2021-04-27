@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project on Jineng Han&#39;s homepage</title>
+    <link>https://hanin97.cn/categories/project/</link>
+    <description>Recent content in Project on Jineng Han&#39;s homepage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Thu, 22 Apr 2021 22:33:10 +0800</lastBuildDate>
+    
+        <atom:link href="https://hanin97.cn/categories/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ResNet: Deep Residual Learning for Image Recognition</title>
+      <link>https://hanin97.cn/2020/10/resnet/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnet/</guid>
+      <description>Deep Residual Learning for Image Recognition 1. 问题背景 当时网络的深度浅，深的网络很难训练（梯度爆炸、难以拟合、退化问题：深度越深，精度趋于饱和后迅速衰减），但是网络的深度是</description>
+    </item>
+    
+    <item>
+      <title>ResNeXt: Aggregated Residual Transformations for Deep Neural Networks</title>
+      <link>https://hanin97.cn/2020/10/resnext/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/resnext/</guid>
+      <description>Aggregated Residual Transformations for Deep Neural Networks 1. 问题背景 Inception: split-transform-merge，这种策略希望用低的计算复杂度来近似大而密集的层的表达能力。虽然它有较高</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter9--内存模型和名称空间</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4/</guid>
+      <description>第9章 内存模型和名称空间 9.1 单独编译 一般将一个大型文件分解为三部分： 头文件：包含结构声明和使用这些结构的函数的原型（通常有函数原型、使用#de</description>
+    </item>
+    
+    <item>
+      <title>Microenvironmental Heterogeneity Parallels Breast cancer Progression: A Histology–Genomic Integration Analysis</title>
+      <link>https://hanin97.cn/2020/10/microenvironmental_heterogeneity_breast_yinyinyuan/</link>
+      <pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/microenvironmental_heterogeneity_breast_yinyinyuan/</guid>
+      <description>Microenvironmental Heterogeneity Parallels Breast cancer Progression: A Histology–Genomic Integration Analysis 个人总结 定量化肿瘤微环境异质性（肿瘤生态系统多样性指数[EDI]）； 将肿瘤微环境的异质性</description>
+    </item>
+    
+    <item>
+      <title>EfficientNet: Rethinking Model Scaling for Convolution Neural Networks</title>
+      <link>https://hanin97.cn/2020/10/efficientnet/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/efficientnet/</guid>
+      <description>EfficientNet: Rethinking Model Scaling for Convolution Neural Networks 预备知识 FLOPS：每秒浮点运算次数 FLOPs：浮点运算数 MAC：乘积累加运算（Multiply Accumulate） 所需显</description>
+    </item>
+    
+    <item>
+      <title>H&amp;E-stained Whole Slide Image Deep Learning Predicts SPOP Mutation State in Prostate cancer</title>
+      <link>https://hanin97.cn/2020/10/spop_mutant_prostate/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/spop_mutant_prostate/</guid>
+      <description>H&amp;amp;E-stained Whole Slide Image Deep Learning Predicts SPOP Mutation State in Prostate cancer 个人总结 1. 提供了一种由HE染色图像预测基因突变的方法。2. 多中心验证，且保存方法不一样（冰冻、福尔马林&amp;ndash</description>
+    </item>
+    
+    <item>
+      <title>Non-local Neural Networks</title>
+      <link>https://hanin97.cn/2020/10/non-local-neural-networks/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/non-local-neural-networks/</guid>
+      <description>Non-local Neural Networks [CVPR2018] 个人总结 1. 捕获长距离依赖：即建立图像上两个有一定距离的像素之间的联系，或视频里两帧的联系，或一段话不同词的联系，更总括地说，就是在计</description>
+    </item>
+    
+    <item>
+      <title>Computer Extracted Features from Initial H&amp;E Tissue Biopsies Predict Disease Progression for Prostate cancer Patients on Active Surveillance</title>
+      <link>https://hanin97.cn/2020/10/cancers-prostate/</link>
+      <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cancers-prostate/</guid>
+      <description>Computer Extracted Features from Initial H&amp;amp;E Tissue Biopsies Predict Disease Progression for Prostate cancer Patients on Active Surveillance 个人总结： 老特征用在新任务上，解决新问题，对比深度模型； 聚类图的画法。 scipy.cluster 任务： 使用提取的特征对主动监视（</description>
+    </item>
+    
+    <item>
+      <title>SeNet</title>
+      <link>https://hanin97.cn/2020/10/senet/</link>
+      <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/senet/</guid>
+      <description>通道级别的注意力机制</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter8--函数探幽</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter8-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/</guid>
+      <description>第8章 函数探幽 8.1 C++内联函数 🐸小知识： 内联函数是C++为提高程序运行速度所做的一项改进，具体是怎么提高运行速度的呢？ 调用常规函数： 存储调用</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter7--函数</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter7-%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter7-%E5%87%BD%E6%95%B0/</guid>
+      <description>第7章 函数&amp;ndash;C++的编程模块 7.1 自定义函数 使用自定义函数：定义、提供原型、调用。 🐸小知识： 如果声明的返回类型为double，而函数</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter6--分支语句和逻辑运算符</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter6-%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5%E5%92%8C%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter6-%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5%E5%92%8C%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description>第6章 分支语句和逻辑运算符 6.1 if语句 #include &amp;lt;iostream&amp;gt; int main() { char ch; std::cout &amp;lt;&amp;lt; &amp;quot;Type, and I shall repeat.\n&amp;quot;; std::cin.get(ch); while (ch != &#39;.&#39;) { if (ch == &#39;\n&#39;) std::cout &amp;lt;&amp;lt; ch; else if (&#39; &#39; == ch) // ch == &#39; &#39;错误防范，防止将==写成= std::cout</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter5--循环和关系表达式</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter5-%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%85%B3%E7%B3%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter5-%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%85%B3%E7%B3%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>第5章 循环和关系表达式 5.1 for循环 注意： test-expression（测试表达式）可以使用任意表达式，不是只能为真或假，C++将结果强制转</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter4--复合类型</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter4-%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter4-%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/</guid>
+      <description>第4章 复合类型 2020-10-15 最深远的复合类型是类。 4.1 数组 4.1.1 声明方法 typeName arrayName[arraySize]; short months[12]; //从0开始编号 注意： 编译器不会检查使用的下标是否有效，当下标超出数组范围时，</description>
+    </item>
+    
+    <item>
+      <title>cpp--chapter3--处理数据</title>
+      <link>https://hanin97.cn/2020/10/cpp-chapter3-%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2020/10/cpp-chapter3-%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE/</guid>
+      <description>1 强制类型转换 // typecast.cpp -- forcing type changes #include &amp;lt;iostream&amp;gt; int main() { using namespace std; int auks, bats, coots; auks = 19.99 + 11.99; bats = (int) 19.99 + (int) 11.99; // old C syntax coots = int (19.99) + int (11.99); // new C++ syntax cout &amp;lt;&amp;lt; &amp;quot;auks = &amp;quot; &amp;lt;&amp;lt; auks &amp;lt;&amp;lt; &amp;quot;, bats = &amp;quot; &amp;lt;&amp;lt; bats; cout &amp;lt;&amp;lt; &amp;quot;, coots</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>https://hanin97.cn/2019/03/markdown-syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2019/03/markdown-syntax/</guid>
+      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Placeholder Text</title>
+      <link>https://hanin97.cn/2019/03/placeholder-text/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2019/03/placeholder-text/</guid>
+      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de
+pectora summo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Math Typesetting</title>
+      <link>https://hanin97.cn/2019/03/math-typesetting/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2019/03/math-typesetting/</guid>
+      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Emoji Support</title>
+      <link>https://hanin97.cn/2019/03/emoji-support/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/2019/03/emoji-support/</guid>
+      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hanin97.cn/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/about/</guid>
+      <description>+++ title = &amp;ldquo;About&amp;rdquo; description = &amp;ldquo;Jineng Han, NUIST, Computational pathology&amp;rdquo; date = &amp;ldquo;2020-05-20&amp;rdquo; aliases = [&amp;ldquo;about-me&amp;rdquo;, &amp;ldquo;contact&amp;rdquo;] author = &amp;ldquo;Jineng Han&amp;rdquo; +++
+个人简介 本科毕业于南京信息工程大学自动化学院，现南京信息工程大学控制科学与工程在读研究生，导师：徐军教授
+研究方向 计算病理学；深度学习；机器学习；图像处理；医工结合
+实验室 江苏省大数据分析技术重点实验室（南京信息工程大学）
+医学人工智能联合研究院（南京信息工程大学—中大医院）
+项目经历   胶质瘤数字病理切片的自动分级（合作单位：东部战区总医院） 该项目包括以下5个子任务：坏死分割；微血管增生分割；细胞核分割；细胞核检测；分级模型构建。首先，由于数字病理切片的分辨率极高，在400倍放大倍数下约100,000x100,000像素，难以直接处理，所以需要使用滑动窗进行取块；其次，因为各子任务对图像的要求不同，所以需要采用分而治之的思想分别处理；最后，基于分割和检测的结果，构建并提取病理组学特征，训练分类器实现自动分级。
+  基于语义和结构特征的前列腺格林森自动分级（合作单位：新加坡A*Star科技局） 该项目旨在分割前列腺病理图像中的5种区域：正常、间质、G3、G4和G5。在格林森分级中，腺体结构信息具有重要的指导作用，且能帮助提升深度学习模型的可解释性，故除了CNN外，还对图像块进行构图，并使用GCN进行节点特征聚合，结合CNN提取的语义特征和GCN提取的结构特征，实现前列腺格林森自动分级。
+  前列腺格林森自动分级系统（合作单位：大阪大学医学院） 该项目旨在开发用户界面将已有的分级模型落地。首先基于PyQt5实现用户界面，然后使用Nuitka将项目打包成可执行文件。该系统支持读取分辨率极大的数字病理图像并支持GPU计算，演示视频见
+  联系方式 QQ： 1263854953
+Github： hanin97
+微信： hjn1263854953
+邮箱： xyhanin@163.com
+友情链接 jwxie.cn
+darlewo.cn
+cyyan.cn</description>
+    </item>
+    
+  </channel>
+</rss>

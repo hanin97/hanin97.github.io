@@ -6,7 +6,7 @@
     <description>Recent content in Series on Jineng Han&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Fri, 16 Apr 2021 21:58:10 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 22 Apr 2021 22:33:10 +0800</lastBuildDate>
     
         <atom:link href="https://hanin97.cn/series/index.xml" rel="self" type="application/rss+xml" />
     
@@ -147,15 +147,6 @@
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://hanin97.cn/about/</link>
-      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanin97.cn/about/</guid>
-      <description>个人简介 本科毕业于南京信息工程大学自动化学院，现南京信息工程大学控制科学与工程在读研究生，导师：徐军教授 研究方向 计算病理学；深度学习；机器学</description>
-    </item>
-    
-    <item>
       <title>Markdown Syntax Guide</title>
       <link>https://hanin97.cn/2019/03/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
@@ -190,6 +181,29 @@ pectora summo.&lt;/p&gt;</description>
       
       <guid>https://hanin97.cn/2019/03/emoji-support/</guid>
       <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hanin97.cn/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanin97.cn/about/</guid>
+      <description>+++ title = &amp;ldquo;About&amp;rdquo; description = &amp;ldquo;Jineng Han, NUIST, Computational pathology&amp;rdquo; date = &amp;ldquo;2020-05-20&amp;rdquo; aliases = [&amp;ldquo;about-me&amp;rdquo;, &amp;ldquo;contact&amp;rdquo;] author = &amp;ldquo;Jineng Han&amp;rdquo; +++
+个人简介 本科毕业于南京信息工程大学自动化学院，现南京信息工程大学控制科学与工程在读研究生，导师：徐军教授
+研究方向 计算病理学；深度学习；机器学习；图像处理；医工结合
+实验室 江苏省大数据分析技术重点实验室（南京信息工程大学）
+医学人工智能联合研究院（南京信息工程大学—中大医院）
+项目经历   胶质瘤数字病理切片的自动分级（合作单位：东部战区总医院） 该项目包括以下5个子任务：坏死分割；微血管增生分割；细胞核分割；细胞核检测；分级模型构建。首先，由于数字病理切片的分辨率极高，在400倍放大倍数下约100,000x100,000像素，难以直接处理，所以需要使用滑动窗进行取块；其次，因为各子任务对图像的要求不同，所以需要采用分而治之的思想分别处理；最后，基于分割和检测的结果，构建并提取病理组学特征，训练分类器实现自动分级。
+  基于语义和结构特征的前列腺格林森自动分级（合作单位：新加坡A*Star科技局） 该项目旨在分割前列腺病理图像中的5种区域：正常、间质、G3、G4和G5。在格林森分级中，腺体结构信息具有重要的指导作用，且能帮助提升深度学习模型的可解释性，故除了CNN外，还对图像块进行构图，并使用GCN进行节点特征聚合，结合CNN提取的语义特征和GCN提取的结构特征，实现前列腺格林森自动分级。
+  前列腺格林森自动分级系统（合作单位：大阪大学医学院） 该项目旨在开发用户界面将已有的分级模型落地。首先基于PyQt5实现用户界面，然后使用Nuitka将项目打包成可执行文件。该系统支持读取分辨率极大的数字病理图像并支持GPU计算，演示视频见
+  联系方式 QQ： 1263854953
+Github： hanin97
+微信： hjn1263854953
+邮箱： xyhanin@163.com
+友情链接 jwxie.cn
+darlewo.cn
+cyyan.cn</description>
     </item>
     
   </channel>
